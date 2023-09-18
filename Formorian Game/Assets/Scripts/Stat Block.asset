@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f88672301f9644eb42c631c7979048, type: 3}
   m_Name: Stat Block
   m_EditorClassIdentifier: 
-  values: []
+  stat: 000000000100000002000000
+  values:
+  - 10
+  - 5
+  - 10

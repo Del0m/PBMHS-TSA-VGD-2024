@@ -16,10 +16,13 @@ public class StatScript : MonoBehaviour
         {
             stats.Add(statBlock.stat[i], statBlock.values[i]);
         }
+        
+        /* DEBUG FOR READING STATS
         foreach (KeyValuePair<StatBlock.Stats, float> kvp in stats)
         {
             Debug.Log(kvp.Key + " " + kvp.Value);
         }
+        */
     }
     public void AddStat(StatBlock.Stats stat, float modifier) // changes a stat using +/-
     {
