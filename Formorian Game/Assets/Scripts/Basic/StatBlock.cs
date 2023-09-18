@@ -1,3 +1,7 @@
+//armin delmo; 9/17/23
+// holds all stats for anything in the game
+// ScriptedObjects will take stats from enum for use.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

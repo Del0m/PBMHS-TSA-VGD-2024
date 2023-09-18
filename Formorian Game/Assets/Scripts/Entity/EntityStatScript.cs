@@ -1,18 +1,25 @@
+//armin delmo; 9/17/23
+// holds stats for entities, relies on StatScript, manages health for entity
+// FOR use in entities
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityStatScript : MonoBehaviour
+public class EntityStatScript : StatScript
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float currentHP; // current hp of entity
 
-    // Update is called once per frame
-    void Update()
+    public float CurrentHP
     {
-        
+        get { return currentHP;  }
+        set 
+        { 
+            currentHP = value;
+            if (currentHP < 0) // check if entity has died.
+            {
+                gameObject.SetActive(false); // remove entity.
+
+            }
+        }
     }
 }
