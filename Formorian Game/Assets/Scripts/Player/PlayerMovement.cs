@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private EntityStatScript entity; // stat script where speed will be derived.
 
     private Rigidbody2D rb; // facilitate movement for character
-    private Gravity gravityScript;
+    private Ground groundScript;
 
     // input system for player
     private Controls control;
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         // grabbing objects off player
         entity = gameObject.GetComponent<EntityStatScript>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        gravityScript = gameObject.GetComponentInChildren<Gravity>();
+        groundScript = gameObject.GetComponentInChildren<Ground>();
 
         control = new Controls(); // set controls so conflicting controls won't mess with movement
         control.Enable(); // turn on action inputs
@@ -38,8 +38,16 @@ public class PlayerMovement : MonoBehaviour
             movement.x = control.Movement.Walk.ReadValue<Vector2>().x * entity.stats[StatBlock.Stats.speed]; // grabbing movement, increasing by speed multiplier
         }
     }
+    public void Jump(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed && groundScript.grounded)
+        {
+            movement.y = entity.stats[StatBlock.Stats.jumpPower];
+            rb.velocity = new Vector2(rb.velocity.x, movement.y);
+        }
+    }
     void Movement()
     {
-        rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -entity.stats[StatBlock.Stats.speed], entity.stats[StatBlock.Stats.speed])); // conduct movement for the player
+        rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -10f, 10f)); // conduct movement for the player
     }
 }

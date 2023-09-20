@@ -2,12 +2,12 @@
 // calculates how much y velocity ungrounded obj should have at given point
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Gravity : MonoBehaviour
+public class Ground : MonoBehaviour
 {
     public bool grounded;
-    public float gravity;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Ground"))
