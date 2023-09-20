@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void FixedUpdate() // updates player position
     {
-        if(Pause.IsPaused) return; // prevents movement in the game if is paused.
+        if (Pause.IsPaused) { return; }
         Movement(); // conduct movement
     }
     public void Move(InputAction.CallbackContext ctx)

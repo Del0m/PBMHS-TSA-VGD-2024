@@ -8,6 +8,8 @@ public class CameraTracking : MonoBehaviour
     public float followCoefficient;
     void LateUpdate() // moves camera to player
     {
+        if (Pause.IsPaused) return; // prevents movement in the game if is paused.
+
         Vector2 camPos = Vector2.MoveTowards(gameObject.transform.position, track.position, Distance() * Time.deltaTime * followCoefficient); // calculating vector to go towards
         transform.position = new Vector3(camPos.x, camPos.y, gameObject.transform.position.z); // moving cam
     }

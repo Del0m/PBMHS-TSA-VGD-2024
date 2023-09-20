@@ -10,9 +10,8 @@ public class Pause : MonoBehaviour
     public static bool IsPaused
     {
         get { return gamePause; }
-        set { gamePause = value; }
+        set { gamePause = !gamePause; } 
     }
-    public delegate void PauseCallback(bool pause);
-    public static event PauseCallback GamePause;
+
 }
 
