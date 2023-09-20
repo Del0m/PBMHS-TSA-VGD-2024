@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     private EntityStatScript entity; // stat script where speed will be derived.
 
-    private CharacterController player; // facilitate movement for character
+    private Rigidbody2D rb; // facilitate movement for character
     private Gravity gravityScript;
 
     // input system for player
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // grabbing objects off player
         entity = gameObject.GetComponent<EntityStatScript>();
-        player = gameObject.GetComponent<CharacterController>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
         gravityScript = gameObject.GetComponentInChildren<Gravity>();
 
         control = new Controls(); // set controls so conflicting controls won't mess with movement
@@ -35,29 +35,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.performed)
         {
-            movement.x = control.Movement.Walk.ReadValue<Vector2>().x;
-            movement *= Time.deltaTime * entity.stats[StatBlock.Stats.speed]; // multiplying by DeltaTime and entity speed
-
-        }
-    }
-    float falling;
-    void Gravity()
-    {
-        if (!gravityScript.grounded)
-        {
-            falling += Physics2D.gravity.y * Time.deltaTime;
-        }
-        else
-        {
-            falling = 0f;
+            movement.x = control.Movement.Walk.ReadValue<Vector2>().x * entity.stats[StatBlock.Stats.speed]; // grabbing movement, increasing by speed multiplier
         }
     }
     void Movement()
     {
-        Gravity();
-        movement.y = falling;
-        movement.y = Mathf.Clamp(movement.y, -10f, 10f) * Time.deltaTime;
-        player.Move(movement); // moves player "movement" increments every update.
-
+        rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -entity.stats[StatBlock.Stats.speed], entity.stats[StatBlock.Stats.speed])); // conduct movement for the player
     }
 }

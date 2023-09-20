@@ -15,6 +15,8 @@ public class StatBlock : ScriptableObject
     {
         health,
         damage,
-        speed
+        speed,
+        jumpPower,
+
     }
 }
