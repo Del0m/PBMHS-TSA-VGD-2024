@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f88672301f9644eb42c631c7979048, type: 3}
-  m_Name: Stat Block
+  m_Name: Player Stat Block
   m_EditorClassIdentifier: 
   stat: 00000000010000000200000003000000
   values:
