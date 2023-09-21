@@ -49,6 +49,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void Movement()
     {
-        rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -10f, 10f)); // conduct movement for the player
+        rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -10f * rb.gravityScale, 10f * rb.gravityScale)); // move player
     }
 }
