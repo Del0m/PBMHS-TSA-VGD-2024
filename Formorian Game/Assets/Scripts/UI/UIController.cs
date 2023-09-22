@@ -4,12 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
-    public static void ShowUI(Image ui)
+    public static void UpdateUI(GameObject ui, bool enable) // shows ui or hides ui
     {
-        ui.enabled = (true);
-    }
-    public static void HideUI(Image ui)
-    {
-        ui.enabled = (false);
+        ui.SetActive(enable);
     }
 }

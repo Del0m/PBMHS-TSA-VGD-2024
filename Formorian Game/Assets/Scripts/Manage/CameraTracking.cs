@@ -6,7 +6,7 @@ public class CameraTracking : MonoBehaviour
 {
     public Transform track; // what object to track
     public float followCoefficient;
-    void LateUpdate() // moves camera to player
+    void FixedUpdate() // moves camera to player
     {
         if (Pause.IsPaused) return; // prevents movement in the game if is paused.
 

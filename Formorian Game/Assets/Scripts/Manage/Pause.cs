@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-    public Image ui;
+    public GameObject ui;
     private static bool gamePause;
     public static bool IsPaused
     {
@@ -23,12 +23,7 @@ public class Pause : MonoBehaviour
         {
             if (ctx.performed)
             {
-                if (gamePause) // check field, getset meant to be changed
-                {
-                    UIController.HideUI(ui);
-                    return;
-                }
-                UIController.ShowUI(ui);
+                UIController.UpdateUI(ui, !IsPaused); // check game pause state, change UI accordingly
             }
         }
         catch (System.Exception)

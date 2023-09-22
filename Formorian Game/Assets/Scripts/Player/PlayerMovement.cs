@@ -29,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public void FixedUpdate() // updates player position
     {
-        if (Pause.IsPaused) { return; }
+        PauseCheck(); // check if the game is paused
+
         Movement(); // conduct movement
     }
     public void Move(InputAction.CallbackContext ctx)
@@ -50,5 +51,12 @@ public class PlayerMovement : MonoBehaviour
     void Movement()
     {
         rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -10f * rb.gravityScale, 10f * rb.gravityScale)); // move player
+    }
+    void PauseCheck() // check if the game is "paused"
+    {
+        if (Pause.IsPaused)
+        {
+            return;
+        }
     }
 }
