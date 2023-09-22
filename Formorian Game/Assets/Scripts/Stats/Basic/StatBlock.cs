@@ -17,6 +17,7 @@ public class StatBlock : ScriptableObject
         damage,
         speed,
         jumpPower,
+        aggroRange
 
     }
 }
