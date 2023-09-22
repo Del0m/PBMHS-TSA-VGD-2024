@@ -7,12 +7,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Movement
 {
-    private EntityStatScript entity; // stat script where speed will be derived.
-
-    private Rigidbody2D rb; // facilitate movement for character
-    private Ground groundScript;
 
     // input system for player
     private Controls control;
