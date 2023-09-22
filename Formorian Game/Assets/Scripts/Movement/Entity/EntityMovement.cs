@@ -5,7 +5,7 @@ using UnityEngine;
 public class EntityMovement : Movement
 {
     public string followTag; // what the entity will try and follow
-    private Collider2D[] obj;
+    public Collider2D[] obj = new Collider2D[10];
 
 
     GameObject follow;
@@ -17,20 +17,31 @@ public class EntityMovement : Movement
 
         foreach (var item in obj)
         {
-            if(item.CompareTag(tag))
+            if(item != null)
             {
-                follow = item.gameObject;
+                if (item.CompareTag("Player"))
+                {
+                    follow = item.gameObject;
+                    Debug.Log(item.tag);
+                }
             }
+
         }
     }
-    public void CheckDistance() // remove follow object if distance is too great
+    public bool CheckDistance() // remove follow object if distance is too great
     {
-        if(!follow) { return; } // no object? don't follow
+        if(!follow) { return false; } // no object? don't follow
 
         // check distance, too far, remove follow
         if ((2 * entity.stats[StatBlock.Stats.aggroRange]) < Vector2.Distance(this.transform.position, follow.transform.position)) 
         {
             follow = null; // remove object
+            return false;
         }
+        return true;
+    }
+    public virtual void Move()
+    {
+        movement = Vector2.MoveTowards(this.transform.position, follow.transform.position, 10f).normalized;
     }
 }

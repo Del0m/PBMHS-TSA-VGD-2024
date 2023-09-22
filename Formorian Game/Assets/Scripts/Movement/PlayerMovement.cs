@@ -12,7 +12,7 @@ public class PlayerMovement : Movement
 
     // input system for player
     private Controls control;
-    private Vector2 movement;
+
     private void Start() // initalizing controls
     {
         // grabbing objects off player
