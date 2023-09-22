@@ -12,4 +12,7 @@ public class Movement : MonoBehaviour
     public Ground groundScript;
 
     public EntityStatScript entity;
+
+    [HideInInspector]
+    public Vector2 movement;
 }
