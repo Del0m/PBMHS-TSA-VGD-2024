@@ -15,6 +15,16 @@ public class Pause : MonoBehaviour
         set 
         { 
             gamePause = !gamePause;
+
+            if(gamePause)
+            {
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+
+            }
         } 
     }
     public void Menu(InputAction.CallbackContext ctx) // enable menu
