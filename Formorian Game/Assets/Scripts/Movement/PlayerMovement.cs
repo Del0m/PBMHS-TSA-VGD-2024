@@ -3,56 +3,53 @@
 // info: 9/14/23
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Ground))]
 public class PlayerMovement : Movement
 {
 
     // input system for player
     private Controls control;
+    public float speed = 3f;
+    public float jumpPower = 3f;
+    float yVelocity;
 
     private void Start() // initalizing controls
     {
         // grabbing objects off player
         entity = gameObject.GetComponent<EntityStatScript>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        groundScript = gameObject.GetComponentInChildren<Ground>();
-
+        groundScript = gameObject.GetComponent<Ground>();
         control = new Controls(); // set controls so conflicting controls won't mess with movement
         control.Enable(); // turn on action inputs
     }
     public void FixedUpdate() // updates player position
     {
-        PauseCheck(); // check if the game is paused
 
         Movement(); // conduct movement
     }
-    public void Move(InputAction.CallbackContext ctx)
+    public void OnMove(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
-        {
-            movement.x = control.Movement.Walk.ReadValue<Vector2>().x * entity.stats[StatBlock.Stats.speed]; // grabbing movement, increasing by speed multiplier
-        }
+
+        rb.velocity = ctx.ReadValue<Vector2>() * speed;
+
     }
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && groundScript.grounded)
-        {
-            movement.y = entity.stats[StatBlock.Stats.jumpPower];
-            rb.velocity = new Vector2(rb.velocity.x, movement.y);
-        }
+        if (groundScript.grounded)
+        rb.AddForce(Vector2.up * jumpPower,ForceMode2D.Impulse);
+
+
     }
     void Movement()
     {
-        rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -10f * rb.gravityScale, 10f * rb.gravityScale)); // move player
+        //gameObject.transform.Translate(new Vector3(0, yVelocity, 0) * Time.deltaTime);
     }
-    void PauseCheck() // check if the game is "paused"
+    bool PauseCheck() // check if the game is "paused"
     {
-        if (Pause.IsPaused)
-        {
-            return;
-        }
+        return Pause.IsPaused;
     }
 }
