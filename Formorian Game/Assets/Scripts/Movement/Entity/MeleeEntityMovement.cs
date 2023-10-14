@@ -8,7 +8,7 @@ public class MeleeEntityMovement : EntityMovement
     {
         base.Move();
 
-        rb.velocity = new Vector2(movement.x * 2f, rb.velocity.y);
+        rb.velocity = new Vector2(movement.x * entity.stats[StatBlock.Stats.speed], rb.velocity.y);
     }
     private void Start()
     {
@@ -20,9 +20,7 @@ public class MeleeEntityMovement : EntityMovement
     private void FixedUpdate()
     {
         CheckRadius();
-        if(CheckDistance())
-        {
-            Move();
-        }
+        CheckDistance();
+        Move();
     }
 }

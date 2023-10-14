@@ -32,16 +32,19 @@ public class EntityMovement : Movement
     {
         if(!follow) { return false; } // no object? don't follow
 
+        var objDistance = Vector2.Distance(this.transform.position, follow.transform.position);
         // check distance, too far, remove follow
-        if ((2 * entity.stats[StatBlock.Stats.aggroRange]) < Vector2.Distance(this.transform.position, follow.transform.position)) 
+        if ((2 * entity.stats[StatBlock.Stats.aggroRange]) < objDistance && objDistance > entity.stats[StatBlock.Stats.minDistance]) 
         {
             follow = null; // remove object
+            Debug.Log(follow);
             return false;
         }
         return true;
     }
     public virtual void Move()
     {
+        if(!CheckDistance()) { movement = new Vector2(0,0); }
         movement = Vector2.MoveTowards(this.transform.position, follow.transform.position, 10f).normalized;
     }
 }

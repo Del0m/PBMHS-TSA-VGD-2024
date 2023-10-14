@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 516757486}
   - component: {fileID: 516757488}
   - component: {fileID: 516757487}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 935456971}
   - component: {fileID: 935456972}
   - component: {fileID: 935456973}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 1099333335}
   - component: {fileID: 1099333334}
   - component: {fileID: 1099333339}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,7 +975,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 544a2ddce71939241ab9b7c86ada841a, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1342,7 +1342,7 @@ GameObject:
   - component: {fileID: 1507064544}
   - component: {fileID: 1507064546}
   - component: {fileID: 1507064545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Grounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
