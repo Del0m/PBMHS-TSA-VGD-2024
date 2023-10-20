@@ -948,17 +948,7 @@ MonoBehaviour:
   entity: {fileID: 1099333334}
   movement: {x: 0, y: 0}
   followTag: Player
-  obj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  follow: {fileID: 0}
 --- !u!50 &1099333336
 Rigidbody2D:
   serializedVersion: 4
@@ -975,7 +965,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 544a2ddce71939241ab9b7c86ada841a, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

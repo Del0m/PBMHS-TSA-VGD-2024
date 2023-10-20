@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f88672301f9644eb42c631c7979048, type: 3}
   m_Name: MeleeEnemyStat
   m_EditorClassIdentifier: 
-  stat: 
-  values: []
+  stat: 04000000
+  values:
+  - 5

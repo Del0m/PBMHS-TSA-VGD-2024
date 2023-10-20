@@ -5,43 +5,38 @@ using UnityEngine;
 public class EntityMovement : Movement
 {
     public string followTag; // what the entity will try and follow
-    public Collider2D[] obj = new Collider2D[10];
 
+    [HideInInspector]
+    public GameObject follow;
 
-    GameObject follow;
-    public void CheckRadius() // check around enemy, see if target is around
+    public bool CheckDistance(Vector2 obj)
     {
-        if(follow) { return; } // don't run if an object is found
-
-        Physics2D.OverlapCircleNonAlloc(transform.position, entity.stats[StatBlock.Stats.aggroRange], obj);
-
-        foreach (var item in obj)
+        if(Vector2.Distance(this.transform.position, obj) > entity.stats[StatBlock.Stats.aggroRange])
         {
-            if(item != null)
-            {
-                if (item.CompareTag("Player"))
-                {
-                    follow = item.gameObject;
-                    Debug.Log(item.tag);
-                }
-            }
-
-        }
-    }
-    public bool CheckDistance() // remove follow object if distance is too great
-    {
-        if(!follow) { return false; } // no object? don't follow
-
-        // check distance, too far, remove follow
-        if ((2 * entity.stats[StatBlock.Stats.aggroRange]) < Vector2.Distance(this.transform.position, follow.transform.position)) 
-        {
-            follow = null; // remove object
+            Debug.Log(CheckRotation(follow.transform.position));
+            Quaternion.Euler(0, CheckRotation(follow.transform.position), 0);
             return false;
         }
         return true;
     }
+    float CheckRotation(Vector2 obj)
+    {
+        if(obj.x - this.transform.position.x < 0)
+        {
+            return -1f;
+        }
+        return 1;
+    }
     public virtual void Move()
     {
-        movement = Vector2.MoveTowards(this.transform.position, follow.transform.position, 10f).normalized;
+        movement = Vector2.MoveTowards(this.transform.position, follow.transform.position, 1f).normalized;
+        if(CheckRotation(follow.transform.position) < 0 && movement.x > 0)
+        {
+            movement.x *= -1;
+        }
+        else if (CheckRotation(follow.transform.position) > 0)
+        {
+            movement.x = Mathf.Abs(movement.x);
+        }
     }
 }
