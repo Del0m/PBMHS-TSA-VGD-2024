@@ -13,12 +13,9 @@ public class PlayerMovement : Movement
     // input system for player
     private Controls control;
 
-    private void Start() // initalizing controls
+    public override void Start() // initalizing controls
     {
-        // grabbing objects off player
-        entity = gameObject.GetComponent<EntityStatScript>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        groundScript = gameObject.GetComponentInChildren<Ground>();
+        base.Start();
 
         control = new Controls(); // set controls so conflicting controls won't mess with movement
         control.Enable(); // turn on action inputs
@@ -38,7 +35,7 @@ public class PlayerMovement : Movement
     }
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && groundScript.grounded)
+        if (ctx.performed && groundScript.detected)
         {
             movement.y = entity.stats[StatBlock.Stats.jumpPower];
             rb.velocity = new Vector2(rb.velocity.x, movement.y);

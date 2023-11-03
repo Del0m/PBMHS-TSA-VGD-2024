@@ -1,50 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class EntityMovement : Movement
 {
     public string followTag; // what the entity will try and follow
-    public Collider2D[] obj = new Collider2D[10];
 
-
-    GameObject follow;
-    public void CheckRadius() // check around enemy, see if target is around
+    public GameObject follow;
+    public LayerDetection wall;
+    public LayerDetection ground;
+    public void CheckDirection() // see what direction enemy should face
     {
-        if(follow) { return; } // don't run if an object is found
-
-        Physics2D.OverlapCircleNonAlloc(transform.position, entity.stats[StatBlock.Stats.aggroRange], obj);
-
-        foreach (var item in obj)
+        if(CheckWall())
         {
-            if(item != null)
+            movement.x = 0;
+            return;
+        }
+        try // prevent errors if target is unassigned
+        {
+            CheckEdge(); // check to see if they can walk in that direction
+            var direction = transform.position.x - follow.transform.position.x;
+            var distance = Vector2.Distance(transform.position, follow.transform.position);
+
+            if(distance <= entity.stats[StatBlock.Stats.minDistance])
             {
-                if (item.CompareTag("Player"))
-                {
-                    follow = item.gameObject;
-                    Debug.Log(item.tag);
-                }
+                movement.x = 0;
+                return; 
             }
 
-        }
-    }
-    public bool CheckDistance() // remove follow object if distance is too great
-    {
-        if(!follow) { return false; } // no object? don't follow
+            if (direction > 0)
+            {
+                movement.x = 1;
+            }
+            else
+            {
+                movement.x = -1;
 
-        var objDistance = Vector2.Distance(this.transform.position, follow.transform.position);
-        // check distance, too far, remove follow
-        if ((2 * entity.stats[StatBlock.Stats.aggroRange]) < objDistance && objDistance > entity.stats[StatBlock.Stats.minDistance]) 
-        {
-            follow = null; // remove object
-            Debug.Log(follow);
-            return false;
+            }
         }
-        return true;
+        catch
+        {
+            // do nothing for now
+        }
+        
     }
-    public virtual void Move()
+    public void CheckEdge()
     {
-        if(!CheckDistance()) { movement = new Vector2(0,0); }
-        movement = Vector2.MoveTowards(this.transform.position, follow.transform.position, 10f).normalized;
+        if(!ground)
+        {
+            CheckHeight(follow.transform);
+            movement.x = 0;
+        }
+    }
+    public bool CheckWall()
+    {
+        Debug.Log("Wall found");
+
+        if (wall.detected)
+        {
+            CheckHeight(follow.transform);
+            return true;
+        }
+        return false;
+    }
+    public void CheckHeight(Transform subject)
+    {
+        var distance = subject.position.y - transform.position.y;
+
+        if(distance > 0)
+        {
+            Jump();
+        }
+    }
+    public virtual void Move() // moves entity towards follow gameobject
+    {
+        CheckDirection();
+        rb.velocity = new Vector2(-movement.x * entity.stats[StatBlock.Stats.speed], rb.velocity.y + (rb.gravityScale * Time.deltaTime));
+
+    }
+    public void Jump()
+    {
+        rb.velocity = new Vector2(movement.x, entity.stats[StatBlock.Stats.jumpPower]);
     }
 }

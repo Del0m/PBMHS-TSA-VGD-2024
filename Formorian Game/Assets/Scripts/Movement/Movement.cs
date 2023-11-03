@@ -9,10 +9,18 @@ public class Movement : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rb;
     [HideInInspector]
-    public Ground groundScript;
+    public LayerDetection groundScript;
 
     public EntityStatScript entity;
 
     [HideInInspector]
     public Vector2 movement;
+
+    public virtual void Start()
+    {
+        entity = gameObject.GetComponent<EntityStatScript>();
+        groundScript = GetComponentInChildren<LayerDetection>();
+
+        rb = gameObject.GetComponent<Rigidbody2D>();
+    }
 }

@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class MeleeEntityMovement : EntityMovement
 {
-    public override void Move() // follow player
+    public override void Start()
     {
-        base.Move();
+        base.Start();
 
-        rb.velocity = new Vector2(movement.x * entity.stats[StatBlock.Stats.speed], rb.velocity.y);
-    }
-    private void Start()
-    {
-        // grabbing objects off object
-        entity = gameObject.GetComponent<EntityStatScript>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        groundScript = gameObject.GetComponentInChildren<Ground>();
+        follow = GameObject.FindGameObjectWithTag(followTag);
+
     }
     private void FixedUpdate()
     {
-        CheckRadius();
-        CheckDistance();
         Move();
     }
 }
