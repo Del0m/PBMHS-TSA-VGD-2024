@@ -10,7 +10,7 @@ public class StatScript : MonoBehaviour
     public Dictionary<StatBlock.Stats, float> stats = new Dictionary<StatBlock.Stats, float>(); // stores all stats for modification
     public StatBlock statBlock; // base stats to get
 
-    private void Start() // add all stats into stats dictionary
+    public virtual void Start() // add all stats into stats dictionary
     {
         for (int i = 0; statBlock.stat.Count > i; i++)
         {

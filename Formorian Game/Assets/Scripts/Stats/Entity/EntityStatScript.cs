@@ -27,4 +27,9 @@ public class EntityStatScript : StatScript
     {
 
     }
+    public override void Start()
+    {
+        base.Start();
+        CurrentHP = stats[StatBlock.Stats.health];
+    }
 }
