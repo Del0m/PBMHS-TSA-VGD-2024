@@ -65,8 +65,6 @@ public class EntityMovement : Movement
     }
     public bool CheckWall()
     {
-        Debug.Log("Wall found");
-
         if (wall.detected)
         {
             CheckHeight(follow.transform);

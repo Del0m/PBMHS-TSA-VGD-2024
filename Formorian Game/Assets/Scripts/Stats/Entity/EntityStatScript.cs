@@ -16,10 +16,11 @@ public class EntityStatScript : StatScript
         set 
         { 
             currentHP = value;
-            if (currentHP < 0) // check if entity has died.
+            HealthCheck();
+
+            if (currentHP <= 0) // check if entity has died.
             {
                 gameObject.SetActive(false); // remove entity.
-                HealthCheck();
             }
         }
     }

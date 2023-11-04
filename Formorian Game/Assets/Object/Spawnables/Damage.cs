@@ -25,7 +25,6 @@ public class Damage : MonoBehaviour
 
         if (collision.gameObject.CompareTag(target))
         {
-            Debug.Log("hit!");
             collision.gameObject.GetComponent<EntityStatScript>().CurrentHP -= damage;
         }
     }
