@@ -11,6 +11,13 @@ public class EntityMovement : Movement
     public GameObject follow;
     public LayerDetection wall;
     public LayerDetection ground;
+
+    private bool destination;
+    public bool Destination
+    {
+        get { return destination; }
+        set { destination = value; }
+    }
     public void CheckDirection() // see what direction enemy should face
     {
         if(CheckWall())
@@ -27,8 +34,10 @@ public class EntityMovement : Movement
             if(distance > entity.stats[StatBlock.Stats.aggroRange] || distance <= entity.stats[StatBlock.Stats.minDistance]) // see if it is too close / too far
             {
                 movement.x = 0;
+                Destination = true;
                 return; 
             }
+            Destination = false;
 
             if (direction > 0)
             {
