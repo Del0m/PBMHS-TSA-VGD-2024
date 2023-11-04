@@ -21,10 +21,10 @@ public class EntityMovement : Movement
         try // prevent errors if target is unassigned
         {
             CheckEdge(); // check to see if they can walk in that direction
-            var direction = transform.position.x - follow.transform.position.x;
-            var distance = Vector2.Distance(transform.position, follow.transform.position);
+            var direction = transform.position.x - follow.transform.position.x; // what direction to move in
+            var distance = Vector2.Distance(transform.position, follow.transform.position); // distance from player
 
-            if(distance <= entity.stats[StatBlock.Stats.minDistance])
+            if(distance > entity.stats[StatBlock.Stats.aggroRange] || distance <= entity.stats[StatBlock.Stats.minDistance]) // see if it is too close / too far
             {
                 movement.x = 0;
                 return; 
@@ -67,7 +67,7 @@ public class EntityMovement : Movement
     }
     public void CheckHeight(Transform subject)
     {
-        var distance = subject.position.y - transform.position.y;
+        var distance = subject.position.y - (transform.position.y - 1);
 
         if(distance > 0)
         {
