@@ -3,13 +3,14 @@
 // FOR use in entities
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class EntityStatScript : StatScript
 {
     private float currentHP; // current hp of entity
 
-    public float CurrentHP
+    public virtual float CurrentHP
     {
         get { return currentHP;  }
         set 
@@ -18,8 +19,12 @@ public class EntityStatScript : StatScript
             if (currentHP < 0) // check if entity has died.
             {
                 gameObject.SetActive(false); // remove entity.
-
+                HealthCheck();
             }
         }
+    }
+    public virtual void HealthCheck()
+    {
+
     }
 }
