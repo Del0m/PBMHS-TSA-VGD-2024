@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -29,9 +30,9 @@ public class EntityMovement : Movement
         {
             CheckEdge(); // check to see if they can walk in that direction
             var direction = transform.position.x - follow.transform.position.x; // what direction to move in
-            var distance = Vector2.Distance(transform.position, follow.transform.position); // distance from player
+            var distance = Mathf.Abs(direction); // distance from player
 
-            if(distance > entity.stats[StatBlock.Stats.aggroRange] || distance <= entity.stats[StatBlock.Stats.minDistance]) // see if it is too close / too far
+            if (distance >= entity.stats[StatBlock.Stats.aggroRange]) // see if it is too close / too far
             {
                 movement.x = 0;
                 Destination = true;
@@ -39,19 +40,29 @@ public class EntityMovement : Movement
             }
             Destination = false;
 
-            if (direction > 0)
+            switch(direction > 0) // check what direction it should move in
             {
-                movement.x = 1;
-            }
-            else
-            {
-                movement.x = -1;
+                case true: // player is in the right direction
+                    if (distance < entity.stats[StatBlock.Stats.minDistance] / 2) {; movement.x = -1; return; } // player is too close
 
+                    // goldilocks zone, dont move entity
+                    else if (distance > entity.stats[StatBlock.Stats.minDistance] / 2 && distance < entity.stats[StatBlock.Stats.minDistance]) { movement.x = 0f; return; }
+                    movement.x = 1f;
+                    return;
+                case false: // player is in the left direction
+
+                    // player is too close
+                    if (distance < entity.stats[StatBlock.Stats.minDistance] / 2) { Debug.Log("Too Close!");  movement.x = 1; return; }
+                    // goldilocks zone, dont move entity
+                    else if (distance > entity.stats[StatBlock.Stats.minDistance] / 2 && distance < entity.stats[StatBlock.Stats.minDistance]) { movement.x = 0f; return; }
+
+                    movement.x = -1f;
+                    return;
             }
         }
         catch
         {
-            // do nothing for now
+            throw new System.Exception("Target not found.");
         }
         
     }
