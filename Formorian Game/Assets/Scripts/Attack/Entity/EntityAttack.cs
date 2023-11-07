@@ -8,7 +8,7 @@ public class EntityAttack : MonoBehaviour
 {
     public AttackObject attack;
     public Dictionary<AttackObject.Parameter, float> stat = new Dictionary<AttackObject.Parameter, float>();
-    private void Start()
+    public virtual void Start()
     {
         InitalizeDictionary(stat); 
     }
@@ -31,7 +31,10 @@ public class EntityAttack : MonoBehaviour
             throw;
         }
 
+    } // initalizes dictionary to allow ease of use for instantiation
+
+    public virtual void CommitAttack() // commit attack, to be done on specific entity scripts
+    {
+
     }
-
-
 }

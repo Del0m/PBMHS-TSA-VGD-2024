@@ -17,7 +17,7 @@ public class AttackObject : ScriptableObject
         length, // how long attack will last for (seconds)
     }
     [Header("Attack Object")]
-    public GameObject attack;
+    public GameObject attack; //  object to hurt other entity
 
 
     // dictionary to pull attack param from
