@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstantiateAttack : MonoBehaviour
+public class AttackZone : MonoBehaviour
 {
     public string objTag;
 

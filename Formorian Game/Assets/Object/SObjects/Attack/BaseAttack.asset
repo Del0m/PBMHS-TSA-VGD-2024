@@ -16,4 +16,4 @@ MonoBehaviour:
   value:
   - 1
   - 1
-  - 1
+  attack: {fileID: 459965532651872762, guid: 1bff73becc0da544cae5ff05ac29a973, type: 3}
