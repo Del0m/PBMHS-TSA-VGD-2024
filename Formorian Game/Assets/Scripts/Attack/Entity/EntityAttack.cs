@@ -6,10 +6,15 @@ using UnityEngine;
 
 public class EntityAttack : MonoBehaviour
 {
+    // from entity itself
+    [HideInInspector]
+    public EntityMovement movement;
+
     public AttackObject attack;
     public Dictionary<AttackObject.Parameter, float> stat = new Dictionary<AttackObject.Parameter, float>();
     public virtual void Start()
     {
+        movement = GetComponent<EntityMovement>();  
         InitalizeDictionary(stat); 
     }
 
@@ -36,5 +41,19 @@ public class EntityAttack : MonoBehaviour
     public virtual void CommitAttack() // commit attack, to be done on specific entity scripts
     {
 
+    }
+    public virtual IEnumerator AttackRoutine() // dependent on entity attack script, responsible for managing how it'll attack
+    {
+        if(movement.Destination)
+        {
+            CommitAttack();
+            yield return new WaitForSeconds(1f);
+            yield return AttackRoutine();
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+            yield return AttackRoutine();
+        }
     }
 }

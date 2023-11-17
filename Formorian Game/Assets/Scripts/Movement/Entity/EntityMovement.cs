@@ -28,6 +28,7 @@ public class EntityMovement : Movement
         }
         try // prevent errors if target is unassigned
         {
+
             CheckEdge(); // check to see if they can walk in that direction
             var direction = transform.position.x - follow.transform.position.x; // what direction to move in
             var distance = Mathf.Abs(direction); // distance from player
@@ -38,7 +39,6 @@ public class EntityMovement : Movement
                 Destination = true;
                 return; 
             }
-            Destination = false;
 
             switch(direction > 0) // check what direction it should move in
             {
@@ -55,6 +55,8 @@ public class EntityMovement : Movement
                     if (distance < entity.stats[StatBlock.Stats.minDistance] / 2) { Debug.Log("Too Close!");  movement.x = 1; return; }
                     // goldilocks zone, dont move entity
                     else if (distance > entity.stats[StatBlock.Stats.minDistance] / 2 && distance < entity.stats[StatBlock.Stats.minDistance]) { movement.x = 0f; return; }
+
+                    Destination = true;
 
                     movement.x = -1f;
                     return;

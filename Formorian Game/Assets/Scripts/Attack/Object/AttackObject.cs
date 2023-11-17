@@ -7,6 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BaseAttack", menuName = "ScriptableObject/Attack")]
 public class AttackObject : ScriptableObject
 {
+
     // lists for attack object to hold onto
     public List<Parameter> key;
     public List<float> value;
@@ -19,7 +20,5 @@ public class AttackObject : ScriptableObject
     [Header("Attack Object")]
     public GameObject attack; //  object to hurt other entity
 
-
-    // dictionary to pull attack param from
-
+    public string target;
 }
