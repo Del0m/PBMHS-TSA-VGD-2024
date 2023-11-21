@@ -19,6 +19,11 @@ public class EntityMovement : Movement
         get { return destination; }
         set { destination = value; }
     }
+    public override void Start()
+    {
+        follow = GameObject.FindGameObjectWithTag(followTag);
+        rb = this.GetComponent<Rigidbody2D>();
+    }
     public void CheckDirection() // see what direction enemy should face
     {
         if(CheckWall())
@@ -52,7 +57,7 @@ public class EntityMovement : Movement
                         Destination = true; 
                         return; 
                     }
-                    Destination = false;  // not near enemy, disabling
+                    Destination = false; 
 
                     movement.x = 1f;
                     return;
@@ -115,5 +120,12 @@ public class EntityMovement : Movement
     public void Jump()
     {
         rb.velocity = new Vector2(movement.x, entity.stats[StatBlock.Stats.jumpPower]);
+    }
+
+    // fixed update
+    private void FixedUpdate()
+    {
+        Move();
+
     }
 }
