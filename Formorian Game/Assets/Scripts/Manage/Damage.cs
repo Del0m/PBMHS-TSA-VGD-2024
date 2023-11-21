@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public float damage = 10;
-    public string target = "Player";
+    public float damage;
+    public string target;
 
     public float TargetDamage
     {
@@ -27,5 +27,14 @@ public class Damage : MonoBehaviour
         {
             collision.gameObject.GetComponent<EntityStatScript>().CurrentHP -= damage;
         }
+    }
+
+    public void SetAttack(float dmg, float time, string aim) // time is how long the attack will stay onscreen, aim is who it is towards
+    {
+        target = aim;
+        damage = dmg;
+        Destroy(this.gameObject, time);
+
+
     }
 }

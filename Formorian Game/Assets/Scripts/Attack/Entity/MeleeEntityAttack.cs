@@ -12,17 +12,10 @@ public class MeleeEntityAttack : EntityAttack
     }
     public override void CommitAttack() // spawn attack zone on center of entity, damage things in radius
     {
-        var attackInstance = Instantiate(attack.attack);
-        var attackScript = attackInstance.GetComponent<AttackZone>();
-        SetAttack(attackScript); // change attack variables
+        Debug.Log("Attack!");
+        var attackInstance = Instantiate(attack.attack, this.transform.position, Quaternion.identity); // spawn attackzone on melee combatant
+        var attackScript = attackInstance.GetComponent<Damage>(); // grab damage script on attackzone
 
-        Destroy(attackInstance, stat[AttackObject.Parameter.length]); // delete object after certain length of time.
-        // this will delete the object if it doesn't make contact with another entity (deleting after making contact is dealt with through)
-    }
-
-    private void SetAttack(AttackZone atk) // sets attack variables for the entity
-    {
-        atk.damage = stat[AttackObject.Parameter.damage];
-        attack.target = movement.followTag;
+        attackScript.SetAttack(stat[AttackObject.Parameter.damage], stat[AttackObject.Parameter.length], movement.followTag); // change attack variables
     }
 }
