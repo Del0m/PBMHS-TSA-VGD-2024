@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f88672301f9644eb42c631c7979048, type: 3}
   m_Name: MeleeEnemyStat
   m_EditorClassIdentifier: 
-  stat: 0000000002000000040000000500000003000000
+  stat: 000000000200000004000000050000000300000001000000
   values:
   - 5
   - 6
   - 10
   - 0.25
+  - 10
   - 10
