@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public float damage;
-    public string target;
+    private float damage;
+    private string target;
 
     public float TargetDamage
     {
@@ -31,8 +31,8 @@ public class Damage : MonoBehaviour
 
     public void SetAttack(float dmg, float time, string aim) // time is how long the attack will stay onscreen, aim is who it is towards
     {
-        target = aim;
-        damage = dmg;
+        TargetTag = aim;
+        TargetDamage = dmg;
         Destroy(this.gameObject, time);
 
 

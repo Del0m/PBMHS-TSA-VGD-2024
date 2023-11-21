@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EntityAttack : MonoBehaviour
+public abstract class EntityAttack : MonoBehaviour
 {
     // from entity itself
     [HideInInspector]
@@ -38,12 +38,10 @@ public class EntityAttack : MonoBehaviour
 
     } // initalizes dictionary to allow ease of use for instantiation
 
-    public virtual void CommitAttack() // commit attack, to be done on specific entity scripts
-    {
-
-    }
+    public abstract void CommitAttack(); // commit attack, to be done on specific entity scripts
     public virtual IEnumerator AttackRoutine() // dependent on entity attack script, responsible for managing how it'll attack
     {
+        Debug.Log(movement.Destination);
         if(movement.Destination)
         {
             CommitAttack();

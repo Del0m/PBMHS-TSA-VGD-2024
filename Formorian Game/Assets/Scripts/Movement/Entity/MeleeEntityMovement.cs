@@ -14,6 +14,5 @@ public class MeleeEntityMovement : EntityMovement
     private void FixedUpdate()
     {
         Move();
-        Debug.Log(Destination);
     }
 }

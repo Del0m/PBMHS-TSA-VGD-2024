@@ -36,7 +36,7 @@ public class EntityMovement : Movement
             if (distance >= entity.stats[StatBlock.Stats.aggroRange]) // see if it is too close / too far
             {
                 movement.x = 0;
-                Destination = true;
+                Destination = false;
                 return; 
             }
 
@@ -46,7 +46,14 @@ public class EntityMovement : Movement
                     if (distance < entity.stats[StatBlock.Stats.minDistance] / 2) {; movement.x = -1; return; } // player is too close
 
                     // goldilocks zone, dont move entity
-                    else if (distance > entity.stats[StatBlock.Stats.minDistance] / 2 && distance < entity.stats[StatBlock.Stats.minDistance]) { movement.x = 0f; return; }
+                    else if (distance > entity.stats[StatBlock.Stats.minDistance] / 2 && distance < entity.stats[StatBlock.Stats.minDistance]) 
+                    { 
+                        movement.x = 0f; 
+                        Destination = true; 
+                        return; 
+                    }
+                    Destination = false;  // not near enemy, disabling
+
                     movement.x = 1f;
                     return;
                 case false: // player is in the left direction
@@ -54,9 +61,14 @@ public class EntityMovement : Movement
                     // player is too close
                     if (distance < entity.stats[StatBlock.Stats.minDistance] / 2) { Debug.Log("Too Close!");  movement.x = 1; return; }
                     // goldilocks zone, dont move entity
-                    else if (distance > entity.stats[StatBlock.Stats.minDistance] / 2 && distance < entity.stats[StatBlock.Stats.minDistance]) { movement.x = 0f; return; }
+                    else if (distance > entity.stats[StatBlock.Stats.minDistance] / 2 && distance < entity.stats[StatBlock.Stats.minDistance]) 
+                    { 
+                        movement.x = 0f; 
+                        Destination = true; 
+                        return; 
+                    }
 
-                    Destination = true;
+                    Destination = false; // not near enemy, disabling
 
                     movement.x = -1f;
                     return;
@@ -94,7 +106,7 @@ public class EntityMovement : Movement
             Jump();
         }
     }
-    public virtual void Move() // moves entity towards follow gameobject
+    public void Move() // moves entity towards follow gameobject
     {
         CheckDirection();
         rb.velocity = new Vector2(-movement.x * entity.stats[StatBlock.Stats.speed], rb.velocity.y + (rb.gravityScale * Time.deltaTime));
