@@ -29,4 +29,25 @@ public class UIController : MonoBehaviour
             yield return new WaitForSeconds(time);
         }
     }
+    public static IEnumerator TextScroll(string text, float time)
+    {
+        var dialogue = text;
+        text = string.Empty;
+
+        var dialogueBox = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<TextMeshProUGUI>();
+        // loop to add dialogue onto the screen
+        for (int i = 0; i < dialogue.Length; i++)
+        {
+            text += dialogue[i];
+
+            dialogueBox.text = text;
+            yield return new WaitForSeconds(time);
+        }
+    }
+    public static void ClearDialogue() // clear dialogue box
+    {
+        var dialogueBox = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<TextMeshProUGUI>();
+        dialogueBox.text = string.Empty;
+
+    }
 }

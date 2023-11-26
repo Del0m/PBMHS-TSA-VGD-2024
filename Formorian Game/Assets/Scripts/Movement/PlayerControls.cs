@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerControls : Movement
 {
+    [HideInInspector]
+    public bool interact;
     // attack script for player
     RangedEntityAttack attack;
     // input system for player
@@ -74,6 +76,19 @@ public class PlayerControls : Movement
         {
             StartCoroutine(Attack());
 
+        }
+    }
+    public void Interact(InputAction.CallbackContext ctx)
+    {
+        if(ctx.action.triggered)
+        {
+            interact = true;
+            Debug.Log(interact);
+
+        }
+        if (ctx.canceled)
+        {
+            interact = false;
         }
     }
     IEnumerator Attack() // runs attack and cooldown

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraTracking : MonoBehaviour
 {
     public Transform track; // what object to track
+    Vector2 trackPosition;
     public float followCoefficient;
     void FixedUpdate() // moves camera to player
     {
@@ -13,7 +14,8 @@ public class CameraTracking : MonoBehaviour
         try
         {
             // get track position to hover above
-            Vector2 camPos = Vector2.MoveTowards(gameObject.transform.position, track.position, Distance() * Time.deltaTime * followCoefficient); // calculating vector to go towards
+            trackPosition = new Vector2(track.position.x, track.position.y + 3);
+            Vector2 camPos = Vector2.MoveTowards(gameObject.transform.position, trackPosition, Distance() * Time.deltaTime * followCoefficient); // calculating vector to go towards
             transform.position = new Vector3(camPos.x, camPos.y, gameObject.transform.position.z); // moving cam
         }
         catch (System.Exception)

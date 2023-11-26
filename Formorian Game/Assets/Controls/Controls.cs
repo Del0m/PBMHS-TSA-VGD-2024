@@ -62,6 +62,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""d00d381e-2c49-4d08-9b11-1761f8f7ac0b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff3c35f5-22a2-4545-94ad-47c45cd1e62f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Pause = m_Movement.FindAction("Pause", throwIfNotFound: true);
         m_Movement_Fire = m_Movement.FindAction("Fire", throwIfNotFound: true);
+        m_Movement_Interact = m_Movement.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Jump;
     private readonly InputAction m_Movement_Pause;
     private readonly InputAction m_Movement_Fire;
+    private readonly InputAction m_Movement_Interact;
     public struct MovementActions
     {
         private @Controls m_Wrapper;
@@ -235,6 +257,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
         public InputAction @Pause => m_Wrapper.m_Movement_Pause;
         public InputAction @Fire => m_Wrapper.m_Movement_Fire;
+        public InputAction @Interact => m_Wrapper.m_Movement_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +279,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnFire;
+                @Interact.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +298,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -282,5 +311,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
