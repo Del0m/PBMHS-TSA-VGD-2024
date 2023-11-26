@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Healthbar
   - Enemy
+  - Dialogue
   layers:
   - Default
   - TransparentFX

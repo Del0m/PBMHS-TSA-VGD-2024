@@ -43,6 +43,8 @@ public class UIController : MonoBehaviour
             dialogueBox.text = text;
             yield return new WaitForSeconds(time);
         }
+        yield return new WaitForSeconds(2f);
+        ClearDialogue();
     }
     public static void ClearDialogue() // clear dialogue box
     {
