@@ -16,7 +16,9 @@ public class AttackObject : ScriptableObject
         damage, // damage multipler for attack
         speed, // how fast attack moves (projectile)
         length, // how long attack will last for (seconds)
+        cooldown, // how long till attack can be done again
     }
+    public bool isHoming; // for projectile, should mostly be false.
     [Header("Attack Object")]
     public GameObject attack; //  object to hurt other entity
 

@@ -12,6 +12,7 @@ public class CameraTracking : MonoBehaviour
 
         try
         {
+            // get track position to hover above
             Vector2 camPos = Vector2.MoveTowards(gameObject.transform.position, track.position, Distance() * Time.deltaTime * followCoefficient); // calculating vector to go towards
             transform.position = new Vector3(camPos.x, camPos.y, gameObject.transform.position.z); // moving cam
         }

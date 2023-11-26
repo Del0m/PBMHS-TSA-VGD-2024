@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class Projectile : AttackZone
 {
+    [HideInInspector]
     public Vector2 direction;
+    [HideInInspector]
     public float speed;
+
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        // set movement of projectile in said direction
-        direction = Vector2.MoveTowards(this.gameObject.transform.position, GameObject.FindGameObjectWithTag(objTag).transform.position, 1f);
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = direction * speed;
     }
-    public void Update()
-    {
-        
-    }
-
 }

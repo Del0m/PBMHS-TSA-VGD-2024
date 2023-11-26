@@ -26,15 +26,12 @@ public class Damage : MonoBehaviour
         if (collision.gameObject.CompareTag(target))
         {
             collision.gameObject.GetComponent<EntityStatScript>().CurrentHP -= damage;
+            Destroy(this.gameObject);
         }
     }
-
-    public void SetAttack(float dmg, float time, string aim) // time is how long the attack will stay onscreen, aim is who it is towards
+    public void SetDamage(float dmg, string trgt) // who to damage, how much damage
     {
-        TargetTag = aim;
         TargetDamage = dmg;
-        Destroy(this.gameObject, time);
-
-
+        TargetTag = trgt;
     }
 }

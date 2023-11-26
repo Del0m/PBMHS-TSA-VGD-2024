@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66facc4715c8f344ca1a9cc09f237251, type: 3}
   m_Name: BaseAttack 1
   m_EditorClassIdentifier: 
-  key: 0000000002000000
+  key: 00000000020000000100000003000000
   value:
   - 1
   - 1
-  attack: {fileID: 459965532651872762, guid: 1bff73becc0da544cae5ff05ac29a973, type: 3}
+  - 5
+  - 1
+  isHoming: 1
+  attack: {fileID: 2839092157240241468, guid: 8a98d5791e1679840812d86717f89eb9, type: 3}
+  target: Player

@@ -14,8 +14,13 @@ public class MeleeEntityAttack : EntityAttack
     {
         Debug.Log("Attack!");
         var attackInstance = Instantiate(attack.attack, this.transform.position, Quaternion.identity); // spawn attackzone on melee combatant
-        var attackScript = attackInstance.GetComponent<Damage>(); // grab damage script on attackzone
+        var attackScript = attackInstance.GetComponent<AttackZone>(); // grab damage script on attackzone
 
-        attackScript.SetAttack(stat[AttackObject.Parameter.damage], stat[AttackObject.Parameter.length], movement.followTag); // change attack variables
+
+        // adding the damage and target of attack
+        attackScript.damageScript.SetDamage(stat[AttackObject.Parameter.damage], attack.target);
+
+        // adding length of time before destruction
+        Destroy(attackScript.gameObject, stat[AttackObject.Parameter.length]);
     }
 }

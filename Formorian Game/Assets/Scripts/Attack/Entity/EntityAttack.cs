@@ -41,17 +41,21 @@ public abstract class EntityAttack : MonoBehaviour
     public abstract void CommitAttack(); // commit attack, to be done on specific entity scripts
     public virtual IEnumerator AttackRoutine() // dependent on entity attack script, responsible for managing how it'll attack
     {
-        Debug.Log(movement.Destination);
-        if(movement.Destination)
+        // check if it is an enemy, as enemies only need this.
+        if(this.gameObject.CompareTag("Enemy"))
         {
-            CommitAttack();
-            yield return new WaitForSeconds(1f);
-            yield return AttackRoutine();
+            if (movement.Destination)
+            {
+                CommitAttack();
+                yield return new WaitForSeconds(stat[AttackObject.Parameter.cooldown]);
+                yield return AttackRoutine();
+            }
+            else
+            {
+                yield return new WaitForSeconds(1f);
+                yield return AttackRoutine();
+            }
         }
-        else
-        {
-            yield return new WaitForSeconds(1f);
-            yield return AttackRoutine();
-        }
+
     }
 }

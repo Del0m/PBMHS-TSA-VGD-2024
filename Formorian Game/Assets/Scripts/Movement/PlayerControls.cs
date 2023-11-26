@@ -7,15 +7,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement : Movement
+public class PlayerControls : Movement
 {
-
+    // attack script for player
+    RangedEntityAttack attack;
     // input system for player
     private Controls control;
 
     public override void Start() // initalizing controls
     {
         base.Start();
+
+        // getting attack script for player
+        attack = GetComponent<RangedEntityAttack>();
 
         control = new Controls(); // set controls so conflicting controls won't mess with movement
         control.Enable(); // turn on action inputs
@@ -44,6 +48,17 @@ public class PlayerMovement : Movement
     void Movement()
     {
         rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -10f * rb.gravityScale, 10f * rb.gravityScale)); // move player
+        
+        // check player's direction
+        if(rb.velocity.x < 0) // face left
+        {
+            this.gameObject.transform.localScale = new Vector3(-1,1,1);
+        }
+        else if (rb.velocity.x > 0) // face right
+        {
+            this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+
+        }
     }
     void PauseCheck() // check if the game is "paused"
     {
@@ -51,5 +66,22 @@ public class PlayerMovement : Movement
         {
             return;
         }
+    }
+    bool cooldown;
+    public void Fire(InputAction.CallbackContext ctx) //allows for firing through control system.
+    {
+        if (ctx.performed && !cooldown)
+        {
+            StartCoroutine(Attack());
+
+        }
+    }
+    IEnumerator Attack() // runs attack and cooldown
+    {
+        cooldown = true;
+        attack.CommitAttack();
+        yield return new WaitForSeconds(attack.stat[AttackObject.Parameter.cooldown]);
+        cooldown = false;
+
     }
 }
