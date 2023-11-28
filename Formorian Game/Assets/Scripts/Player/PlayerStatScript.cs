@@ -12,7 +12,15 @@ public class PlayerStatScript : EntityStatScript
     }
     public override void HealthCheck()
     {
-        var healthPercent = CurrentHP / stats[StatBlock.Stats.health] * 100;
-        UIController.XScaleUI(GameObject.FindGameObjectWithTag("Healthbar"), healthPercent);
+        try
+        {
+            var healthPercent = CurrentHP / stats[StatBlock.Stats.health] * 100;
+            UIController.XScaleUI(GameObject.FindGameObjectWithTag("Healthbar"), healthPercent);
+        }
+        catch (System.Exception)
+        {
+            throw new System.Exception("Healthbar not found.");
+        }
+
     }
 }

@@ -20,7 +20,8 @@ public class CameraTracking : MonoBehaviour
         }
         catch (System.Exception)
         {
-            throw new System.Exception("Error: Player not found.");
+            track = GameObject.FindGameObjectWithTag("Player").transform;
+            throw new System.Exception("Error: Player not found. Looking for player.");
             
         }
 

@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6878192371050634594}
   - component: {fileID: 6878192371050634605}
   - component: {fileID: 6878192371050634604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ranged Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ MonoBehaviour:
   followTag: Player
   follow: {fileID: 0}
   wall: {fileID: 6878192369367011107}
-  ground: {fileID: 0}
+  ground: {fileID: 6878192369507978658}
 --- !u!61 &6878192371050634605
 BoxCollider2D:
   m_ObjectHideFlags: 0

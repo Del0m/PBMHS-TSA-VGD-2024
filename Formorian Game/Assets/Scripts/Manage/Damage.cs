@@ -23,10 +23,18 @@ public class Damage : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.CompareTag(target))
+        if (collision.gameObject.CompareTag(target) || collision.gameObject.CompareTag("Ground"))
         {
-            collision.gameObject.GetComponent<EntityStatScript>().CurrentHP -= damage;
-            Destroy(this.gameObject);
+            try // target
+            {
+                collision.gameObject.GetComponent<EntityStatScript>().CurrentHP -= damage;
+                Destroy(this.gameObject);
+            }
+            catch (System.Exception) // ground
+            {
+                Destroy(this.gameObject);
+            }
+
         }
     }
     public void SetDamage(float dmg, string trgt) // who to damage, how much damage
