@@ -25,6 +25,7 @@ public class PlayerControls : Movement
 
         control = new Controls(); // set controls so conflicting controls won't mess with movement
         control.Enable(); // turn on action inputs
+
     }
     public void FixedUpdate() // updates player position
     {
@@ -97,4 +98,5 @@ public class PlayerControls : Movement
         cooldown = false;
 
     }
+
 }
