@@ -19,7 +19,6 @@ public class PlayerControls : Movement
     public override void Start() // initalizing controls
     {
         base.Start();
-
         // getting attack script for player
         attack = GetComponent<RangedEntityAttack>();
 

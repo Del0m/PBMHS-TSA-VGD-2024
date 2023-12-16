@@ -8,7 +8,7 @@ public class Settings : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey(Option.textScroll.ToString()))
         {
-            PlayerPrefs.SetFloat(Option.textScroll.ToString(), .15f);
+            PlayerPrefs.SetFloat(Option.textScroll.ToString(), .05f);
         }
         if (!PlayerPrefs.HasKey(Option.volume.ToString()))
         {
@@ -25,5 +25,13 @@ public class Settings : MonoBehaviour
     public static float PullSetting(Option option) // pull setting from dict
     {
         return PlayerPrefs.GetFloat(option.ToString());
+    }
+    public void VolumeSetting(float value)
+    {
+        PlayerPrefs.SetFloat("volume", value);
+    }
+    public void TextScrollSetting(float value)
+    {
+        PlayerPrefs.SetFloat("textScroll",( .025f + (value / 4)));
     }
 }

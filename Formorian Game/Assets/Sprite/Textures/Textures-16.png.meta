@@ -599,7 +599,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Textures-16_23
+      name: dark-stone
       rect:
         serializedVersion: 2
         x: 112
@@ -1565,7 +1565,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Textures-16_69
+      name: sand
       rect:
         serializedVersion: 2
         x: 16
@@ -4043,7 +4043,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Textures-16_187
+      name: shrub-leaf
       rect:
         serializedVersion: 2
         x: 0
@@ -8369,7 +8369,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Textures-16_393
+      name: grass1
       rect:
         serializedVersion: 2
         x: 64
@@ -8663,7 +8663,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Textures-16_407
+      name: grass1-ground
       rect:
         serializedVersion: 2
         x: 64
@@ -9192,7 +9192,6 @@ TextureImporter:
       Textures-16_1: -77610596
       Textures-16_400: -2026579677
       Textures-16_300: 931569292
-      Textures-16_69: -975792949
       Textures-16_170: -635286709
       Textures-16_414: -848986098
       Textures-16_64: 1173226001
@@ -9208,7 +9207,6 @@ TextureImporter:
       Textures-16_269: -309588458
       Textures-16_338: -1357541981
       Textures-16_327: 7723166
-      Textures-16_187: 1239349424
       Textures-16_340: 2018889834
       Textures-16_78: -1615093745
       Textures-16_215: 1044246753
@@ -9223,7 +9221,6 @@ TextureImporter:
       Textures-16_287: -1098640310
       Textures-16_355: -1282041347
       Textures-16_394: -392163764
-      Textures-16_23: 1672202219
       Textures-16_149: 904245996
       Textures-16_391: 343488619
       Textures-16_254: 864475612
@@ -9248,6 +9245,7 @@ TextureImporter:
       Textures-16_192: -6044770
       Textures-16_185: 2045736155
       Textures-16_285: 1418619318
+      shrub-leaf: 1239349424
       Textures-16_219: 648078132
       Textures-16_5: -1663572713
       Textures-16_4: -1576006332
@@ -9329,8 +9327,8 @@ TextureImporter:
       Textures-16_324: -1992055122
       Textures-16_353: 1865371819
       Textures-16_144: -76238130
-      Textures-16_385: -1416753446
       Textures-16_381: 1196525729
+      Textures-16_385: -1416753446
       Textures-16_222: 1722604612
       Textures-16_210: -2127089558
       Textures-16_389: 73070232
@@ -9347,6 +9345,7 @@ TextureImporter:
       Textures-16_104: 952630723
       Textures-16_336: -110569021
       Textures-16_358: 490179347
+      grass1-ground: -1630065125
       Textures-16_418: -1995225016
       Textures-16_178: 289429792
       Textures-16_401: 55883720
@@ -9419,7 +9418,6 @@ TextureImporter:
       Textures-16_116: -1554763919
       Textures-16_289: 488202614
       Textures-16_60: -1258877609
-      Textures-16_407: -1630065125
       Textures-16_111: -891118421
       Textures-16_45: -1624146660
       Textures-16_396: -1331058222
@@ -9430,11 +9428,10 @@ TextureImporter:
       Textures-16_425: 477370334
       Textures-16_202: 1736618473
       Textures-16_54: -1356973447
-      Textures-16_393: 588326934
+      Textures-16_410: -1257157520
       Textures-16_43: -269555335
       Textures-16_18: 672910761
       Textures-16_13: -320903772
-      Textures-16_410: -1257157520
       Textures-16_379: -1376624169
       Textures-16_52: 1440879017
       Textures-16_420: -1984438163
@@ -9499,6 +9496,7 @@ TextureImporter:
       Textures-16_135: -623736187
       Textures-16_40: 294630714
       Textures-16_351: 813386540
+      dark-stone: 1672202219
       Textures-16_10: 1132175779
       Textures-16_242: 1804755191
       Textures-16_298: 98231492
@@ -9518,6 +9516,7 @@ TextureImporter:
       Textures-16_16: -2041630933
       Textures-16_368: -134110114
       Textures-16_321: 372394283
+      grass1: 588326934
       Textures-16_261: -514333978
       Textures-16_272: -444885857
       Textures-16_376: 1267002251
@@ -9526,6 +9525,7 @@ TextureImporter:
       Textures-16_382: 1477920922
       Textures-16_203: -994632651
       Textures-16_70: 575620487
+      sand: -975792949
       Textures-16_98: 1445829546
       Textures-16_117: -609397292
       Textures-16_334: -829212735

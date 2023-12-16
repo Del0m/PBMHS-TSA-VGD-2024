@@ -16,7 +16,6 @@ public class RenderSpot : MonoBehaviour // for use in player
 
     private void OnBecameInvisible()
     {
-        Debug.Log("No Longer Seen...");
         seen = false;
         master.CheckGates();
     }

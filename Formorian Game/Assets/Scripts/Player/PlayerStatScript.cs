@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStatScript : EntityStatScript
 {
@@ -22,5 +23,13 @@ public class PlayerStatScript : EntityStatScript
             throw new System.Exception("Healthbar not found.");
         }
 
+    }
+    private void OnDisable()
+    {
+        if (CurrentHP <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        }
     }
 }

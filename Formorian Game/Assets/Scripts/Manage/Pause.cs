@@ -14,17 +14,7 @@ public class Pause : MonoBehaviour
         get { return gamePause; }
         set 
         { 
-            gamePause = !gamePause;
-
-            if(gamePause)
-            {
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-
-            }
+            gamePause = value;
         } 
     }
     public void Menu(InputAction.CallbackContext ctx) // enable menu
@@ -34,6 +24,9 @@ public class Pause : MonoBehaviour
             if (ctx.performed)
             {
                 UIController.UpdateUI(ui, !IsPaused); // check game pause state, change UI accordingly
+                gamePause = !gamePause;
+
+                CheckGameState();
             }
         }
         catch (System.Exception)
@@ -42,6 +35,19 @@ public class Pause : MonoBehaviour
             throw;
         }
 
+    }
+    void CheckGameState()
+    {
+
+        if (gamePause)
+        {
+            Time.timeScale = 0.0001f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+
+        }
     }
 }
 

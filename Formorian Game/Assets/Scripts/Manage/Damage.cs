@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    private float damage;
-    private string target;
+    public float damage;
+    public string target;
 
     public float TargetDamage
     {

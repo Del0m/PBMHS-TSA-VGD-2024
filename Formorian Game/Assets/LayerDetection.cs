@@ -15,6 +15,13 @@ public class LayerDetection : MonoBehaviour
             detected = true;
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag(subject))
+        {
+            detected = true;
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag(subject))

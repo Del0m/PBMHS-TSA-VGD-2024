@@ -10,11 +10,6 @@ public class CameraTracking : MonoBehaviour
 
     private bool onScreen;
 
-    private void Awake()
-    {
-        transform.position = new Vector3(trackPosition.x, trackPosition.y, gameObject.transform.position.z); // moving cam X
-
-    }
     public bool OnScreen // check to see if character is onscreen or not.
     {
         get { return onScreen; }
@@ -35,7 +30,6 @@ public class CameraTracking : MonoBehaviour
     void FollowY(Vector2 camPos)
     {
         transform.position = new Vector3(transform.position.x, camPos.y, gameObject.transform.position.z); // moving cam y
-        Debug.Log("Moving!");
     }
     float Distance() // calculates distance from player
     {

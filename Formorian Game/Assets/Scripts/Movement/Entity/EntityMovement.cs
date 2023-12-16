@@ -119,7 +119,10 @@ public class EntityMovement : Movement
     }
     public void Jump()
     {
-        rb.velocity = new Vector2(movement.x, entity.stats[StatBlock.Stats.jumpPower]);
+        if(ground.detected)
+        {
+            rb.velocity = new Vector2(movement.x, entity.stats[StatBlock.Stats.jumpPower]);
+        }
     }
 
     // fixed update
