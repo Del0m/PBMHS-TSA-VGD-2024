@@ -31,11 +31,7 @@ public class CameraTracking : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, camPos.y, gameObject.transform.position.z); // moving cam y
     }
-    float Distance() // calculates distance from player
-    {
-        
-        return Vector2.Distance(track.transform.position, gameObject.transform.position);
-    }
+
     public void TrackObject()
     {
         if (Pause.IsPaused) return; // prevents movement in the game if is paused.
