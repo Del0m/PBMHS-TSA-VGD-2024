@@ -49,7 +49,7 @@ public class PlayerControls : Movement
     }
     void Movement()
     {
-        rb.velocity = new Vector2(movement.x, Mathf.Clamp(rb.velocity.y, -20f * rb.gravityScale, 20f * rb.gravityScale)); // move player
+        rb.velocity = new Vector2(movement.x, rb.velocity.y + rb.gravityScale * Time.fixedDeltaTime); // move player
         
         // check player's direction
         if(rb.velocity.x < 0) // face left
