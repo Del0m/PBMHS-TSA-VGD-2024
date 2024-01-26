@@ -51,12 +51,12 @@ public class CameraMovement : MonoBehaviour
         {
             moveTowards.x = transform.position.x;
         }
-
+        /* CHANGE TO THE Y COORDINATE!
         if (cam.WorldToViewportPoint(followedObject.transform.position).y > .25f && cam.WorldToViewportPoint(followedObject.transform.position).y < .5f) // check if the player isn't too far left.
         {
             moveTowards.x = transform.position.x;
         }
-
+        */
         var camPos = new Vector3(moveTowards.x, transform.position.y, -10f);
         transform.position = camPos;
 
