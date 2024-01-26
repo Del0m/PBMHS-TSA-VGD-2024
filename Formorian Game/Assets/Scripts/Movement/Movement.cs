@@ -23,4 +23,5 @@ public class Movement : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
+
 }

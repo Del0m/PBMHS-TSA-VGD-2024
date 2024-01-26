@@ -41,15 +41,14 @@ public class PlayerControls : Movement
     }
     public void Jump(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && groundScript.detected)
+        if (ctx.performed && entity.JumpsLeft > 0 && !jumpCooldown)
         {
-            movement.y = entity.stats[StatBlock.Stats.jumpPower];
-            rb.velocity = new Vector2(rb.velocity.x, movement.y);
+            StartCoroutine(Jump());
         }
     }
     void Movement()
     {
-        rb.velocity = new Vector2(movement.x, rb.velocity.y + rb.gravityScale * Time.fixedDeltaTime); // move player
+        rb.velocity = new Vector2(movement.x, rb.velocity.y - rb.gravityScale * Time.fixedDeltaTime); // move player
         
         // check player's direction
         if(rb.velocity.x < 0) // face left
@@ -95,6 +94,21 @@ public class PlayerControls : Movement
         attack.CommitAttack();
         yield return new WaitForSeconds(attack.stat[AttackObject.Parameter.cooldown]);
         cooldown = false;
+
+    }
+    bool jumpCooldown;
+    IEnumerator Jump()
+    {
+        jumpCooldown = true;
+        Debug.Log(entity.JumpsLeft);
+
+        // remove one jump
+        entity.JumpsLeft--;
+
+        movement.y = entity.stats[StatBlock.Stats.jumpPower];
+        rb.velocity = new Vector2(rb.velocity.x, movement.y);
+        yield return new WaitForSeconds(.25f);
+        jumpCooldown = false;
 
     }
 
