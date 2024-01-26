@@ -22,6 +22,7 @@ public class CameraMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Follow(); // follow player
+
     }
     float Distance() // calculates distance from player
     {
@@ -42,33 +43,22 @@ public class CameraMovement : MonoBehaviour
             return distance;
         }
     }
-
     void Follow() // follow the player using the camera
     {
-        try
-        {
-            if (!move)
-            {
-                Debug.Log("No longer following player.");
+        var moveTowards = Vector2.MoveTowards(this.gameObject.transform.position, followedObject.position, followSpeed * Time.fixedDeltaTime);
 
-                return;
-            }
-            var moveTowards = Vector2.MoveTowards(this.gameObject.transform.position, followedObject.position, followSpeed * Time.fixedDeltaTime* Distance());
-            Debug.Log("Following player.");
+        if (cam.WorldToViewportPoint(followedObject.transform.position).x > .25f && cam.WorldToViewportPoint(followedObject.transform.position).x < .5f) // check if the player isn't too far left.
+        {
+            moveTowards.x = transform.position.x;
+        }
 
-            var camPos = new Vector3(moveTowards.x, transform.position.y, -10f);
-            transform.position = camPos;
-        }
-        catch (System.NullReferenceException)
+        if (cam.WorldToViewportPoint(followedObject.transform.position).y > .25f && cam.WorldToViewportPoint(followedObject.transform.position).y < .5f) // check if the player isn't too far left.
         {
-            Debug.LogError("Error! no object found on either player, area, or cam!\narea = " + area.name + "\ncam = " + cam.name + "\nfollowedObject = " + followedObject.name);
-            throw;
+            moveTowards.x = transform.position.x;
         }
-        catch(System.Exception)
-        {
-            Debug.LogError("Check code! Invalid error found!");
-            throw;
-        }
+
+        var camPos = new Vector3(moveTowards.x, transform.position.y, -10f);
+        transform.position = camPos;
 
     }
     private void OnTriggerExit2D(Collider2D collision) // turn on case

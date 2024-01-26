@@ -8,7 +8,7 @@ using UnityEngine;
 public class EntityStatScript : StatScript
 {
     private float currentHP; // current hp of entity
-
+    private float jumpsLeft; // see how many jumps the entity has left
     public virtual float CurrentHP
     {
         get { return currentHP;  }
@@ -23,6 +23,27 @@ public class EntityStatScript : StatScript
             }
         }
     }
+    public virtual float JumpsLeft
+    {
+        get 
+        {
+            try
+            {
+                return jumpsLeft;
+
+            }
+            catch (System.Exception)
+            {
+                Debug.LogError("No JumpsLeft found in Statblock.");
+                return 1f;
+            }
+        }
+        set
+        {
+            jumpsLeft = value;
+        }
+    }
+
     public virtual void HealthCheck()
     {
 
