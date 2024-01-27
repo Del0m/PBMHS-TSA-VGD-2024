@@ -46,18 +46,18 @@ public class CameraMovement : MonoBehaviour
     void Follow() // follow the player using the camera
     {
         var moveTowards = Vector2.MoveTowards(this.gameObject.transform.position, followedObject.position, followSpeed * Time.fixedDeltaTime);
-
+        Debug.Log(cam.WorldToViewportPoint(followedObject.transform.position));
         if (cam.WorldToViewportPoint(followedObject.transform.position).x > .25f && cam.WorldToViewportPoint(followedObject.transform.position).x < .5f) // check if the player isn't too far left.
         {
             moveTowards.x = transform.position.x;
         }
-        /* CHANGE TO THE Y COORDINATE!
+
         if (cam.WorldToViewportPoint(followedObject.transform.position).y > .25f && cam.WorldToViewportPoint(followedObject.transform.position).y < .5f) // check if the player isn't too far left.
         {
-            moveTowards.x = transform.position.x;
+            moveTowards.y = transform.position.y;
         }
-        */
-        var camPos = new Vector3(moveTowards.x, transform.position.y, -10f);
+
+        var camPos = new Vector3(moveTowards.x, moveTowards.y, -10f);
         transform.position = camPos;
 
     }
