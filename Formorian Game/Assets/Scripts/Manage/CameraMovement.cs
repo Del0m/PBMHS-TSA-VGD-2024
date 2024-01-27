@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     {
         // grab components off of the object.
         area = this.GetComponent<Collider2D>();
-        cam = this.GetComponent<Camera>();
+        cam  = this.GetComponent<Camera>();
     }
     private void FixedUpdate()
     {
@@ -51,30 +51,14 @@ public class CameraMovement : MonoBehaviour
         {
             moveTowards.x = transform.position.x;
         }
-        /* CHANGE TO THE Y COORDINATE!
+
         if (cam.WorldToViewportPoint(followedObject.transform.position).y > .25f && cam.WorldToViewportPoint(followedObject.transform.position).y < .5f) // check if the player isn't too far left.
         {
-            moveTowards.x = transform.position.x;
+            moveTowards.y = transform.position.y;
         }
-        */
-        var camPos = new Vector3(moveTowards.x, transform.position.y, -10f);
+
+        var camPos = new Vector3(moveTowards.x, moveTowards.y, -10f);
         transform.position = camPos;
 
-    }
-    private void OnTriggerExit2D(Collider2D collision) // turn on case
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            move = true;
-
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision) // turn off case
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            move = false;
-
-        }
     }
 }
