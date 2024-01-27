@@ -784,7 +784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2d7e1e1ef1fc84f933d9561ea39ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 3
+  followSpeed: 6
   followedObject: {fileID: 935456967}
   move: 1
 --- !u!1 &826032118

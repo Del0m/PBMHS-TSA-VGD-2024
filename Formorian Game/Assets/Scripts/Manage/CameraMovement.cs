@@ -3,10 +3,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class CameraMovement : MonoBehaviour
 {
-    Collider2D area; // area camera won't follow player
     Camera cam; // camera in question
 
     public float followSpeed; // how fast the camera is going to move
@@ -16,7 +16,6 @@ public class CameraMovement : MonoBehaviour
     private void Awake()
     {
         // grab components off of the object.
-        area = this.GetComponent<Collider2D>();
         cam  = this.GetComponent<Camera>();
     }
     private void FixedUpdate()
@@ -45,14 +44,16 @@ public class CameraMovement : MonoBehaviour
     }
     void Follow() // follow the player using the camera
     {
-        var moveTowards = Vector2.MoveTowards(this.gameObject.transform.position, followedObject.position, followSpeed * Time.fixedDeltaTime);
+        var correction = followedObject.position + new Vector3(0, 2.5f, 0);
+        var moveTowards = Vector2.MoveTowards(gameObject.transform.position, correction, followSpeed * Time.fixedDeltaTime);
         Debug.Log(cam.WorldToViewportPoint(followedObject.transform.position));
+
         if (cam.WorldToViewportPoint(followedObject.transform.position).x > .25f && cam.WorldToViewportPoint(followedObject.transform.position).x < .5f) // check if the player isn't too far left.
         {
             moveTowards.x = transform.position.x;
         }
 
-        if (cam.WorldToViewportPoint(followedObject.transform.position).y > .25f && cam.WorldToViewportPoint(followedObject.transform.position).y < .5f) // check if the player isn't too far left.
+        if (cam.WorldToViewportPoint(followedObject.transform.position).y > .15f && cam.WorldToViewportPoint(followedObject.transform.position).y < .25f) // check if the player isn't too far left.
         {
             moveTowards.y = transform.position.y;
         }
