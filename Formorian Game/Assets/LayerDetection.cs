@@ -8,14 +8,7 @@ public class LayerDetection : MonoBehaviour
 
     public string subject; // tag in question
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag(subject))
-        {
-            detected = true;
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(subject))
         {
@@ -31,8 +24,8 @@ public class LayerDetection : MonoBehaviour
                 // do nothing
             }
         }
-
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag(subject))

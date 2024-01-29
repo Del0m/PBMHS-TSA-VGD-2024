@@ -7,6 +7,10 @@ using UnityEngine.VFX;
 
 public class CameraMovement : MonoBehaviour
 {
+    [Header("Camera Bounds")]
+    public float cameraBottom;
+    public float cameraTop;
+
     Camera cam; // camera in question
 
     public float followSpeed; // how fast the camera is going to move
@@ -46,14 +50,13 @@ public class CameraMovement : MonoBehaviour
     {
         var correction = followedObject.position + new Vector3(0, 2.5f, 0);
         var moveTowards = Vector2.MoveTowards(gameObject.transform.position, correction, followSpeed * Time.fixedDeltaTime);
-        Debug.Log(cam.WorldToViewportPoint(followedObject.transform.position));
 
         if (cam.WorldToViewportPoint(followedObject.transform.position).x > .25f && cam.WorldToViewportPoint(followedObject.transform.position).x < .5f) // check if the player isn't too far left.
         {
             moveTowards.x = transform.position.x;
         }
 
-        if (cam.WorldToViewportPoint(followedObject.transform.position).y > .15f && cam.WorldToViewportPoint(followedObject.transform.position).y < .25f) // check if the player isn't too far left.
+        if (cam.WorldToViewportPoint(followedObject.transform.position).y > cameraBottom && cam.WorldToViewportPoint(followedObject.transform.position).y < cameraTop) // check if the player isn't too far left.
         {
             moveTowards.y = transform.position.y;
         }

@@ -85,7 +85,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.24, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -246,11 +246,11 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 544a2ddce71939241ab9b7c86ada841a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7341298545201624504
 BoxCollider2D:
@@ -270,7 +270,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.24, y: 0.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7341298545621291675}
   - component: {fileID: 7341298545621291653}
-  - component: {fileID: 7341298545621291652}
+  - component: {fileID: 137550762}
   m_Layer: 3
   m_Name: Grounded
   m_TagString: Untagged
@@ -338,7 +338,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: -0.0052013397, y: -0.5078749}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -349,9 +349,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.025, y: 0.95}
+  m_Size: {x: 1.0752239, y: 0.03425014}
   m_EdgeRadius: 0
---- !u!114 &7341298545621291652
+--- !u!114 &137550762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7341298545621291672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b776d72a9c1fbe94e83ba1e1c4957869, type: 3}
+  m_Script: {fileID: 11500000, guid: fb44e399a721899448c57f21bd51a6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   detected: 0
