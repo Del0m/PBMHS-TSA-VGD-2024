@@ -21,6 +21,7 @@ public class CameraMovement : MonoBehaviour
     {
         // grab components off of the object.
         cam  = this.GetComponent<Camera>();
+
     }
     private void FixedUpdate()
     {
@@ -48,21 +49,36 @@ public class CameraMovement : MonoBehaviour
     }
     void Follow() // follow the player using the camera
     {
-        var correction = followedObject.position + new Vector3(0, 2.5f, 0);
-        var moveTowards = Vector2.MoveTowards(gameObject.transform.position, correction, followSpeed * Time.fixedDeltaTime);
-
-        if (cam.WorldToViewportPoint(followedObject.transform.position).x > .25f && cam.WorldToViewportPoint(followedObject.transform.position).x < .5f) // check if the player isn't too far left.
+        try
         {
-            moveTowards.x = transform.position.x;
-        }
+            var correction = followedObject.position + new Vector3(0, 2.5f, 0);
+            var moveTowards = Vector2.MoveTowards(gameObject.transform.position, correction, followSpeed * Time.fixedDeltaTime);
 
-        if (cam.WorldToViewportPoint(followedObject.transform.position).y > cameraBottom && cam.WorldToViewportPoint(followedObject.transform.position).y < cameraTop) // check if the player isn't too far left.
+            if (cam.WorldToViewportPoint(followedObject.transform.position).x > .25f && cam.WorldToViewportPoint(followedObject.transform.position).x < .5f) // check if the player isn't too far left.
+            {
+                moveTowards.x = transform.position.x;
+            }
+
+            if (cam.WorldToViewportPoint(followedObject.transform.position).y > cameraBottom && cam.WorldToViewportPoint(followedObject.transform.position).y < cameraTop) // check if the player isn't too far left.
+            {
+                moveTowards.y = transform.position.y;
+            }
+
+            var camPos = new Vector3(moveTowards.x, moveTowards.y, -10f);
+            transform.position = camPos;
+
+        }
+        catch (System.NullReferenceException)
         {
-            moveTowards.y = transform.position.y;
+            Debug.LogError("Cannot find followed object, defaulting to player");
+            followedObject = GameObject.FindGameObjectWithTag("Player").transform;
+            throw;
         }
-
-        var camPos = new Vector3(moveTowards.x, moveTowards.y, -10f);
-        transform.position = camPos;
-
+        catch (System.Exception)
+        {
+            Debug.LogError("Unknown error has occured!");
+            throw;
+        }
+        
     }
 }

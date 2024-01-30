@@ -477,17 +477,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495097185}
   m_CullTransparentMesh: 1
---- !u!114 &516757489 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7341298545621291652, guid: 977b897d37db40a428009ea925fe3e9d, type: 3}
-  m_PrefabInstance: {fileID: 7341298546111694197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b776d72a9c1fbe94e83ba1e1c4957869, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &592084916
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2d7e1e1ef1fc84f933d9561ea39ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraBottom: 0
+  cameraTop: 0
   followSpeed: 6
   followedObject: {fileID: 935456967}
   move: 1
@@ -2861,7 +2852,7 @@ PrefabInstance:
     - target: {fileID: 6878192371050634594, guid: fd8913b3d43093f43831a51d62acdda0, type: 3}
       propertyPath: ground
       value: 
-      objectReference: {fileID: 516757489}
+      objectReference: {fileID: 0}
     - target: {fileID: 6878192371050634595, guid: fd8913b3d43093f43831a51d62acdda0, type: 3}
       propertyPath: m_Name
       value: Ranged Enemy
@@ -2971,6 +2962,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7341298545201624499, guid: 977b897d37db40a428009ea925fe3e9d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 25a0fd79b0c72574880f47c1ab43ff1d, type: 3}
     - target: {fileID: 7341298545201624511, guid: 977b897d37db40a428009ea925fe3e9d, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
