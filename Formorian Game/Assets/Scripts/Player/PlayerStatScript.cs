@@ -20,7 +20,7 @@ public class PlayerStatScript : EntityStatScript
         }
         catch (System.Exception)
         {
-            throw new System.Exception("Healthbar not found.");
+            throw new System.Exception("Healthbar not found. Respawning UI.");
         }
 
     }
