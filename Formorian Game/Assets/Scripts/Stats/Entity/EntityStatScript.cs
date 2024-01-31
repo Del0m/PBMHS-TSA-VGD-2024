@@ -15,12 +15,7 @@ public class EntityStatScript : StatScript
         set 
         { 
             currentHP = value;
-            HealthCheck();
-
-            if (currentHP <= 0) // check if entity has died.
-            {
-                gameObject.SetActive(false); // remove entity.
-            }
+            HealthCheck(value);
         }
     }
     public virtual float JumpsLeft
@@ -44,9 +39,12 @@ public class EntityStatScript : StatScript
         }
     }
 
-    public virtual void HealthCheck()
+    public virtual void HealthCheck(float val)
     {
-
+        if(val <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
     public override void Start()
     {

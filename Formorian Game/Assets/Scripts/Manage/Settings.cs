@@ -29,6 +29,9 @@ public class Settings : MonoBehaviour
     public void VolumeSetting(float value)
     {
         PlayerPrefs.SetFloat("volume", value);
+
+        // update all audio objects with new sound
+        FindObjectOfType<Audio>().AudioUpdate();
     }
     public void TextScrollSetting(float value)
     {

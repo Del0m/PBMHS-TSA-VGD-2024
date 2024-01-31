@@ -11,25 +11,31 @@ public class PlayerStatScript : EntityStatScript
         CurrentHP = stats[StatBlock.Stats.health];
 
     }
-    public override void HealthCheck()
+
+    public override void HealthCheck(float val)
     {
         try
         {
-            var healthPercent = CurrentHP / stats[StatBlock.Stats.health] * 100;
+            var healthPercent = val / stats[StatBlock.Stats.health] * 100;
             UIController.XScaleUI(GameObject.FindGameObjectWithTag("Healthbar"), healthPercent);
+
+            if(val <= 0)
+            {
+                Debug.Log("Dead!");
+                StartCoroutine(End());
+            }
         }
         catch (System.Exception)
         {
-            throw new System.Exception("Healthbar not found. Respawning UI.");
+            throw new System.Exception("Healthbar not found.");
         }
 
     }
-    private void OnDisable()
+    IEnumerator End() // pop up end screen, reset level.
     {
-        if (CurrentHP <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        UIController.UIPopUp(GameObject.FindGameObjectWithTag("End Screen"), true);
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-        }
     }
 }

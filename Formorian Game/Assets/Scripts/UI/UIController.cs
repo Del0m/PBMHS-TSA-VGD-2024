@@ -16,7 +16,16 @@ public class UIController : MonoBehaviour
         var uiObject = ui.GetComponent<Image>();
         uiObject.rectTransform.sizeDelta = new Vector2(scale, uiObject.rectTransform.sizeDelta.y);
     }
+    public static void UIPopUp(GameObject ui, bool enable) // purpose is to pop up UI using scales to hide them.
+    {
+        if(enable) // show ui
+        {
+            ui.transform.localScale = new Vector3(1, 1, 1);
+            return;
+        }
+        ui.transform.localScale = new Vector3(0, 1, 1); // prevent it from being seen by setting scale to 0.
 
+    }
     // text scrolling
     public static IEnumerator TextScroll(TextMeshProUGUI text, float time)
     {
