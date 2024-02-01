@@ -21,6 +21,7 @@ public class EntityMovement : Movement
     }
     public override void Start()
     {
+        base.Start();
         follow = GameObject.FindGameObjectWithTag(followTag);
         rb = this.GetComponent<Rigidbody2D>();
     }
@@ -48,6 +49,8 @@ public class EntityMovement : Movement
             switch(direction > 0) // check what direction it should move in
             {
                 case true: // player is in the right direction
+                    // change direction of entity
+                    transform.localScale = new Vector3(-1, 1, 1);
                     if (distance < entity.stats[StatBlock.Stats.minDistance] / 2) {; movement.x = -1; return; } // player is too close
 
                     // goldilocks zone, dont move entity
@@ -62,6 +65,9 @@ public class EntityMovement : Movement
                     movement.x = 1f;
                     return;
                 case false: // player is in the left direction
+                    
+                    // change direction of entity
+                    transform.localScale = new Vector3(1, 1, 1);
 
                     // player is too close
                     if (distance < entity.stats[StatBlock.Stats.minDistance] / 2) { Debug.Log("Too Close!");  movement.x = 1; return; }
@@ -81,7 +87,8 @@ public class EntityMovement : Movement
         }
         catch
         {
-            throw new System.Exception("Target not found.");
+            // new System.Exception("Target not found.")
+            throw;
         }
         
     }
@@ -117,7 +124,7 @@ public class EntityMovement : Movement
         rb.velocity = new Vector2(-movement.x * entity.stats[StatBlock.Stats.speed], rb.velocity.y + (rb.gravityScale * Time.deltaTime));
 
         // add animation
-        //_animator._animator.SetInteger("speed", (int)movement.x);
+        _animator._animator.SetInteger("speed", (int)movement.x);
     }
     public void Jump()
     {

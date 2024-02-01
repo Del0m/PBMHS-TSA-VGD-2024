@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f88672301f9644eb42c631c7979048, type: 3}
-  m_Name: Ranged Enemy
+  m_Name: RangedGoblinStat
   m_EditorClassIdentifier: 
-  stat: 000000000200000004000000050000000300000001000000
+  stat: 00000000020000000400000005000000030000000100000006000000
   values:
   - 6
   - 4
@@ -20,3 +20,4 @@ MonoBehaviour:
   - 5
   - 10
   - 10
+  - 3

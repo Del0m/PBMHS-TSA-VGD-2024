@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,9 @@ public class PlayerStatScript : EntityStatScript
     {
         try
         {
+            // tick the player to red.
+            StartCoroutine(Hurt());
+
             var healthPercent = val / stats[StatBlock.Stats.health] * 100;
             UIController.XScaleUI(GameObject.FindGameObjectWithTag("Healthbar"), healthPercent);
 
@@ -37,5 +41,12 @@ public class PlayerStatScript : EntityStatScript
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
+    }
+    IEnumerator Hurt() // turn red, then back to normal
+    {
+        var sprite = GetComponent<SpriteRenderer>();
+        sprite.color = UnityEngine.Color.red;
+        yield return new WaitForSeconds(.15f);
+        sprite.color = UnityEngine.Color.white;
     }
 }

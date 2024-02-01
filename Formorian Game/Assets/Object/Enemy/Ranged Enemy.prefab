@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 6878192371050634594}
   - component: {fileID: 6878192371050634605}
   - component: {fileID: 6878192371050634604}
+  - component: {fileID: 7447973650639693576}
   m_Layer: 6
   m_Name: Ranged Enemy
   m_TagString: Enemy
@@ -283,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef665d9753b805748b209ca91f8f0448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
   rb: {fileID: 0}
   groundScript: {fileID: 0}
   entity: {fileID: 6878192371050634592}
@@ -331,3 +333,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   attack: {fileID: 11400000, guid: 7527cbc8be41684498ef2df62e2c6a0c, type: 2}
+--- !u!95 &7447973650639693576
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6878192371050634595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
