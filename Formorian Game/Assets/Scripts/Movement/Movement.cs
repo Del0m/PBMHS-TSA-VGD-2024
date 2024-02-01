@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
+    public AnimationManager _animator;
     [HideInInspector]
     public Rigidbody2D rb;
     [HideInInspector]
@@ -22,6 +23,8 @@ public class Movement : MonoBehaviour
         groundScript = GetComponentInChildren<LayerDetection>();
 
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+        _animator = GetComponent<AnimationManager>();
     }
 
 }

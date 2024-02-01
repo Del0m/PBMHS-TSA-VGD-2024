@@ -49,8 +49,8 @@ public class PlayerControls : Movement
     void Movement()
     {
         rb.velocity = new Vector2(movement.x, rb.velocity.y - rb.gravityScale * Time.fixedDeltaTime); // move player
-        
         // check player's direction
+        _animator._animator.SetInteger("speed", ((int)(movement.x)));
         if(rb.velocity.x < 0) // face left
         {
             this.gameObject.transform.localScale = new Vector3(-1,1,1);
@@ -58,8 +58,8 @@ public class PlayerControls : Movement
         else if (rb.velocity.x > 0) // face right
         {
             this.gameObject.transform.localScale = new Vector3(1, 1, 1);
-
         }
+
     }
     void PauseCheck() // check if the game is "paused"
     {

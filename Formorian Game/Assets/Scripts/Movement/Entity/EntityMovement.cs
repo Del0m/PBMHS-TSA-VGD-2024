@@ -116,6 +116,8 @@ public class EntityMovement : Movement
         CheckDirection();
         rb.velocity = new Vector2(-movement.x * entity.stats[StatBlock.Stats.speed], rb.velocity.y + (rb.gravityScale * Time.deltaTime));
 
+        // add animation
+        //_animator._animator.SetInteger("speed", (int)movement.x);
     }
     public void Jump()
     {
