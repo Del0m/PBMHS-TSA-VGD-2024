@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4f88672301f9644eb42c631c7979048, type: 3}
-  m_Name: Basic Item
+  m_Name: Blue Fairy
   m_EditorClassIdentifier: 
   stat: 02000000
   values:
-  - 5
+  - 0.5

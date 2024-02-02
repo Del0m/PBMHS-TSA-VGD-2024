@@ -13,9 +13,9 @@ public class EntityStatScript : StatScript
     {
         get { return currentHP;  }
         set 
-        { 
+        {
+            HealthCheck(value, currentHP);
             currentHP = value;
-            HealthCheck(value);
         }
     }
     public virtual float JumpsLeft
@@ -39,7 +39,7 @@ public class EntityStatScript : StatScript
         }
     }
 
-    public virtual void HealthCheck(float val)
+    public virtual void HealthCheck(float val, float prevHealth)
     {
         if(val <= 0)
         {

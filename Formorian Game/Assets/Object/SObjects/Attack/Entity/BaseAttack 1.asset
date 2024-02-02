@@ -16,8 +16,8 @@ MonoBehaviour:
   value:
   - 2
   - 1
-  - 5
-  - 1
+  - 2
+  - 1.5
   isHoming: 1
   attack: {fileID: 2839092157240241468, guid: 8a98d5791e1679840812d86717f89eb9, type: 3}
   target: Player

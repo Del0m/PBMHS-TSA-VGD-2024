@@ -15,5 +15,8 @@ public class Projectile : AttackZone
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = direction * speed;
+
+        // flip depending on direction
+        transform.localScale = new Vector3(1 * direction.normalized.x, 1, 1);
     }
 }

@@ -24,7 +24,7 @@ public class StatScript : MonoBehaviour
         }
         */
     }
-    public void AddStat(StatBlock.Stats stat, float modifier) // changes a stat using +/-
+    public virtual void AddStat(StatBlock.Stats stat, float modifier) // changes a stat using +/-
     {
         stats[stat] += modifier;
     }
