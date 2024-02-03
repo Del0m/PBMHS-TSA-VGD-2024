@@ -160,7 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visible: 1
-  block: {fileID: 11400000, guid: c6835b77bad3c2a43a3dceb45e016d1b, type: 2}
+  block: {fileID: 0}
+  interactable: 0
 --- !u!61 &2855154214220789982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 6, y: 6}
   m_EdgeRadius: 2
 --- !u!50 &2855154214220789978
 Rigidbody2D:

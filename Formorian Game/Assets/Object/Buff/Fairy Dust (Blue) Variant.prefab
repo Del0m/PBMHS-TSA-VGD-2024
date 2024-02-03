@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: block
       value: 
       objectReference: {fileID: 11400000, guid: fa250effb4debd24687a74d50fa82776, type: 2}
+    - target: {fileID: 2855154214220789977, guid: 80880f9088a4eb242a4bc2c51f1657fb, type: 3}
+      propertyPath: interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2855154214220789979, guid: 80880f9088a4eb242a4bc2c51f1657fb, type: 3}
       propertyPath: m_RootOrder
       value: 0

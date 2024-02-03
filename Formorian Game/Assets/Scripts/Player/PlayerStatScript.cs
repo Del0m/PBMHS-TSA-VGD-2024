@@ -20,7 +20,9 @@ public class PlayerStatScript : EntityStatScript
         {
             // tick the player to red.
             if(val > prevHealth)
-            StartCoroutine(Hurt());
+            {
+                StartCoroutine(Hurt());
+            }
 
             var healthPercent = val / stats[StatBlock.Stats.health] * 100;
             UIController.XScaleUI(GameObject.FindGameObjectWithTag("Healthbar"), healthPercent);

@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 3596615655757416581}
   - component: {fileID: 3596615655757416584}
   - component: {fileID: 3596615655757416579}
+  - component: {fileID: 9151128906752806892}
+  - component: {fileID: 7785441181641878630}
   m_Layer: 6
   m_Name: Fairy
   m_TagString: Enemy
@@ -198,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ee8636312dea645937b8ab936476f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
+  _animator: {fileID: 7785441181641878630}
   rb: {fileID: 0}
   groundScript: {fileID: 0}
   entity: {fileID: 3596615655757416581}
@@ -273,6 +275,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
+--- !u!95 &9151128906752806892
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596615655757416582}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7785441181641878630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596615655757416582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf6dbe14ad437d45ad5efd2608571bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 9151128906752806892}
 --- !u!1 &3596615657278448016
 GameObject:
   m_ObjectHideFlags: 0

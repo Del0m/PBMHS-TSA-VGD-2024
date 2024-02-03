@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Dialogue
   - End Screen
+  - Buff
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Post-Processing
   m_SortingLayers:
   - name: Default
     uniqueID: 0
