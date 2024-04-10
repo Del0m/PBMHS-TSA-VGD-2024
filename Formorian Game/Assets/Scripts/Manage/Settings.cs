@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Settings : MonoBehaviour
 {
-    private void Awake() // see if variables exist
+    private void Start() // see if variables exist
     {
         if (!PlayerPrefs.HasKey(Option.textScroll.ToString()))
         {

@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStatScript : EntityStatScript
 {
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         CurrentHP = stats[StatBlock.Stats.health];
 
     }

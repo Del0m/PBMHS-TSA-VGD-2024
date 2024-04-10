@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66facc4715c8f344ca1a9cc09f237251, type: 3}
-  m_Name: Basic Attack
+  m_Name: Spear Attack
   m_EditorClassIdentifier: 
   key: 00000000010000000200000003000000
   value:
+  - 8
+  - 15
   - 2
-  - 10
-  - 2
-  - 0.5
+  - 0.75
   isHoming: 0
-  attack: {fileID: 2839092157240241468, guid: d18aabda458865b4fae1fe8ac621879e, type: 3}
+  attack: {fileID: 2839092157240241468, guid: 4b826c014b09baf4fa8127e2017b927f, type: 3}
   target: Enemy

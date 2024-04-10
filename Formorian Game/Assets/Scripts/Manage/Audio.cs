@@ -20,8 +20,10 @@ public class Audio : MonoBehaviour
     }
     public void AudioUpdate() // update the audio volume
     {
-        audioSource.volume = 1 * Settings.PullSetting(Settings.Option.volume);
+        audioSource.volume = .15f; // * Settings.PullSetting(Settings.Option.volume)
+        if (audioType == AudioType.music) {
+            audioSource.volume *= .25f;
+        }
     }
-
 }
 

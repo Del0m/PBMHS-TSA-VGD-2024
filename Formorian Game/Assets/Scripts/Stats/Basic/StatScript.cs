@@ -10,7 +10,7 @@ public class StatScript : MonoBehaviour
     public Dictionary<StatBlock.Stats, float> stats = new Dictionary<StatBlock.Stats, float>(); // stores all stats for modification
     public StatBlock statBlock; // base stats to get
 
-    public virtual void Start() // add all stats into stats dictionary
+    public virtual void Awake() // add all stats into stats dictionary
     {
         for (int i = 0; statBlock.stat.Count > i; i++)
         {
@@ -27,5 +27,11 @@ public class StatScript : MonoBehaviour
     public virtual void AddStat(StatBlock.Stats stat, float modifier) // changes a stat using +/-
     {
         stats[stat] += modifier;
+    }
+    public IEnumerator BuffStat(StatBlock.Stats stat, float modifier, float duration) // changes a stat using +/- temporarily
+    {
+        stats[stat] += modifier;
+        yield return new WaitForSeconds(duration);
+        stats[stat] -= modifier;
     }
 }

@@ -100,8 +100,6 @@ public class PlayerControls : Movement
     IEnumerator Jump()
     {
         jumpCooldown = true;
-        Debug.Log(entity.JumpsLeft);
-
         // remove one jump
         entity.JumpsLeft--;
 

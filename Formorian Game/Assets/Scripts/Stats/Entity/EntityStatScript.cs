@@ -46,9 +46,9 @@ public class EntityStatScript : StatScript
             gameObject.SetActive(false);
         }
     }
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         CurrentHP = stats[StatBlock.Stats.health];
     }
 }

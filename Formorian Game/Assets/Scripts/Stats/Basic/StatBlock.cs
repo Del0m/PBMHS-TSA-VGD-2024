@@ -19,7 +19,9 @@ public class StatBlock : ScriptableObject
         jumpPower,
         jumpCount,
         aggroRange,
-        minDistance
+        minDistance,
+        stepHeight,
+        stepJump
 
     }
 }
