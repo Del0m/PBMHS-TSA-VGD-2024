@@ -14,12 +14,22 @@ public abstract class Interactable : MonoBehaviour
     {
         if(collision.CompareTag("Player")) // see if it is a player
         {
-            CanInteract(true); // enable info
-            if(collision.gameObject.GetComponent<PlayerControls>().interact)
+            try
             {
-                OnInteract();
-                return;
+                Debug.Log(collision.gameObject.name);
+                CanInteract(true); // enable info
+                if (collision.gameObject.GetComponent<PlayerControls>().interact)
+                {
+                    OnInteract();
+                    return;
+                }
             }
+            catch (System.NullReferenceException)
+            {
+                Debug.LogError("Cannot find PlayerControls");
+                //throw;
+            }
+
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
