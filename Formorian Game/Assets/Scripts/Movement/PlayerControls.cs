@@ -1,6 +1,7 @@
 // armin delmo
 // purpose: to manage movement of player using a Character Controller
 // info: 9/14/23
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,6 +89,16 @@ public class PlayerControls : Movement
             interact = false;
         }
     }
+    public void Dash(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("Dashing Attewmpt!");
+
+        if (ctx.performed)
+        {
+            Debug.Log("Dashing Successful!");
+            StartCoroutine(DashRoutine());
+        }
+    }
     IEnumerator Attack() // runs attack and cooldown
     {
         cooldown = true;
@@ -109,5 +120,20 @@ public class PlayerControls : Movement
         jumpCooldown = false;
 
     }
+    bool dashCooldown;
+    IEnumerator DashRoutine() // coroutine to increase movement speed temporarily
+    {
+        // prevent dashing multiple times
+        if(dashCooldown) { yield return null; }
+        
+        //enable cooldown
+        dashCooldown = true;
+        
+        // increase speed stat for .5 seconds
+        entity.BuffStat(StatBlock.Stats.speed, 2f, .5f);
+        yield return new WaitForSeconds(.5f);
 
+        // allow dashing
+        dashCooldown = false;
+    }
 }

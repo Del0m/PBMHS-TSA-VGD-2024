@@ -26,42 +26,39 @@ public class Item : MonoBehaviour
             stat.Add(block.stat[i], block.values[i]);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision) // look for player, buff player
+    private void UpdateItem(GameObject entity) // grab entity to update item onto them.
     {
-        if(collision.CompareTag("Player"))
-        {
-            var statCount = stat.Count;
+        var statCount = stat.Count;
 
-            for (int i = 0; i < statCount; i++)
+        for (int i = 0; i < statCount; i++)
+        {
+            try
             {
-                try
+                if (interactable) //// make them have to press "Interact" to grab item.
                 {
-                    if(interactable) //// make them have to press "Interact" to grab item.
+                    if (interacted)
                     {
-                        if(interacted)
-                        {
-                            OnGrab(collision.gameObject, i); // add stats to item
-                        }
-                        else
-                        {
-                            return;
-                        }
+                        OnGrab(entity, i); // add stats to item
                     }
                     else
                     {
-                        OnGrab(collision.gameObject, i); // add stats to item
+                        return;
                     }
                 }
-                catch (System.Exception)
+                else
                 {
-                    Debug.LogError("Buff not found. Check player stats and item buff.");
-                    throw;
+                    OnGrab(entity, i); // add stats to item
                 }
             }
-            Destroy(this.gameObject);
+            catch (System.Exception)
+            {
+                Debug.LogError("Buff not found. Check player stats and item buff.");
+                throw;
+            }
         }
-    }
+        Destroy(this.gameObject);
+    
+}
     public virtual void OnGrab(GameObject grabber, int i) // to be overridden on SpecialItem to allow for other items to spawn
     {
         grabber.GetComponent<PlayerStatScript>().AddStat(block.stat[i], stat[block.stat[i]]); // buff player's stats accordingly
@@ -71,14 +68,24 @@ public class Item : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            if (collision.gameObject.GetComponent<PlayerControls>().interact)
+            try
             {
-                interacted = true;
-                OnTriggerEnter2D(collision);
-
-                Destroy(this.gameObject);
-
+                if (collision.gameObject.GetComponent<PlayerControls>().interact)
+                {
+                    interacted = true;
+                    UpdateItem(collision.gameObject);
+                }
             }
+            catch (System.NullReferenceException)
+            {
+                Debug.LogError("Can't grab player PlayerControls.");
+                //throw;
+            }
+            catch (System.Exception)
+            {
+                throw; // the issue is unknown, send it out.
+            }
+
         }
 
     }
