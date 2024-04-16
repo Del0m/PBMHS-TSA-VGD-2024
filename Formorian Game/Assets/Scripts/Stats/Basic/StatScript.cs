@@ -33,5 +33,6 @@ public class StatScript : MonoBehaviour
         stats[stat] += modifier;
         yield return new WaitForSeconds(duration);
         stats[stat] -= modifier;
+
     }
 }

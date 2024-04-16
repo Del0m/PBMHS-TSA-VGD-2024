@@ -37,7 +37,7 @@ public class PlayerControls : Movement
     {
         if (ctx.performed)
         {
-            movement.x = control.Movement.Walk.ReadValue<Vector2>().x * entity.stats[StatBlock.Stats.speed]; // grabbing movement, increasing by speed multiplier
+            movement.x = control.Movement.Walk.ReadValue<Vector2>().x; // grabbing movement, increasing by speed multiplier
         }
     }
     public void Jump(InputAction.CallbackContext ctx)
@@ -49,7 +49,9 @@ public class PlayerControls : Movement
     }
     void Movement()
     {
-        rb.velocity = new Vector2(movement.x, rb.velocity.y - rb.gravityScale * Time.fixedDeltaTime); // move player
+        movement.x = control.Movement.Walk.ReadValue<Vector2>().x * entity.stats[StatBlock.Stats.speed]; // grabbing movement, increasing by speed multiplier
+
+        rb.velocity = new Vector2(movement.x , rb.velocity.y - rb.gravityScale * Time.fixedDeltaTime); // move player
         // check player's direction
         _animator._animator.SetInteger("speed", ((int)(movement.x)));
         if(rb.velocity.x < 0) // face left
@@ -91,11 +93,9 @@ public class PlayerControls : Movement
     }
     public void Dash(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Dashing Attewmpt!");
 
         if (ctx.performed)
         {
-            Debug.Log("Dashing Successful!");
             StartCoroutine(DashRoutine());
         }
     }
@@ -125,13 +125,14 @@ public class PlayerControls : Movement
     {
         // prevent dashing multiple times
         if(dashCooldown) { yield return null; }
-        
+        Debug.Log("Dashing!");
+
         //enable cooldown
         dashCooldown = true;
-        
+
         // increase speed stat for .5 seconds
-        entity.BuffStat(StatBlock.Stats.speed, 2f, .5f);
-        yield return new WaitForSeconds(.5f);
+        StartCoroutine(entity.BuffStat(StatBlock.Stats.speed, 6f, .5f));
+        yield return new WaitForSeconds(2f);
 
         // allow dashing
         dashCooldown = false;

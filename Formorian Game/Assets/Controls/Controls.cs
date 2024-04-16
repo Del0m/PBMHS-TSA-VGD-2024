@@ -74,11 +74,11 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Dash"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""d9bf300a-aa6d-4145-9847-4c3858691800"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""MultiTap"",
+                    ""interactions"": ""MultiTap(tapTime=0.5,tapDelay=1,tapCount=1)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -186,7 +186,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""356b16b8-6b4b-4baf-908a-0dda6b46d16b"",
                     ""path"": ""<Keyboard>/a"",
-                    ""interactions"": ""MultiTap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
@@ -197,7 +197,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""beada27f-80e8-43cc-bedf-f8a0383d2cd2"",
                     ""path"": ""<Keyboard>/d"",
-                    ""interactions"": ""MultiTap"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
