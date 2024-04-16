@@ -16,7 +16,6 @@ public abstract class Interactable : MonoBehaviour
         {
             try
             {
-                Debug.Log(collision.gameObject.name);
                 CanInteract(true); // enable info
                 if (collision.gameObject.GetComponent<PlayerControls>().interact)
                 {

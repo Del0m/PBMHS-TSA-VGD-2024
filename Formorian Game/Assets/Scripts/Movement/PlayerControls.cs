@@ -125,7 +125,6 @@ public class PlayerControls : Movement
     {
         // prevent dashing multiple times
         if(dashCooldown) { yield return null; }
-        Debug.Log("Dashing!");
 
         //enable cooldown
         dashCooldown = true;
