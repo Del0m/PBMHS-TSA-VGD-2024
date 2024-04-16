@@ -18,10 +18,14 @@ public class StatBlock : ScriptableObject
         speed,
         jumpPower,
         jumpCount,
-        aggroRange,
-        minDistance,
-        stepHeight,
-        stepJump
+        //enemy stats
+        aggroRange, // how close the player needs to be in order to follow
+        minDistance, // minimum distance the enemy will keep from player
 
+        // player stats
+        stepHeight, // how high the player can utilize stepJump
+        stepJump, // how high the player will be teleported to move up steps
+        dashCoefficient, // mmultiplies user speed while dashing
+        dashCooldown, // how long it takes to dash again
     }
 }

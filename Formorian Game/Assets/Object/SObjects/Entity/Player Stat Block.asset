@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f88672301f9644eb42c631c7979048, type: 3}
   m_Name: Player Stat Block
   m_EditorClassIdentifier: 
-  stat: 00000000010000000200000003000000040000000700000008000000
+  stat: 00000000010000000200000003000000040000000700000008000000090000000a000000
   values:
   - 10
   - 5
@@ -21,3 +21,5 @@ MonoBehaviour:
   - 2
   - 0.25
   - 1
+  - 5
+  - 2

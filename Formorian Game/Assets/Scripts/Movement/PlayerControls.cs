@@ -131,8 +131,12 @@ public class PlayerControls : Movement
         dashCooldown = true;
 
         // increase speed stat for .5 seconds
-        StartCoroutine(entity.BuffStat(StatBlock.Stats.speed, 6f, .5f));
-        yield return new WaitForSeconds(2f);
+        StartCoroutine(entity.BuffStat(
+            StatBlock.Stats.speed, // stat to modify
+            entity.stats[StatBlock.Stats.dashCoefficient], // how much stat is being multiplied
+            .5f // how long the dash will last
+            ));
+        yield return new WaitForSeconds(entity.stats[StatBlock.Stats.dashCooldown]);
 
         // allow dashing
         dashCooldown = false;
