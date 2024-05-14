@@ -707,10 +707,10 @@ TextureImporter:
       name: ground_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 328
-        width: 16
-        height: 16
+        x: 33
+        y: 329
+        width: 14
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

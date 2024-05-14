@@ -101,8 +101,10 @@ public class PlayerControls : Movement
     }
     IEnumerator Attack() // runs attack and cooldown
     {
+
         cooldown = true;
         attack.CommitAttack();
+        
         yield return new WaitForSeconds(attack.stat[AttackObject.Parameter.cooldown]);
         cooldown = false;
 

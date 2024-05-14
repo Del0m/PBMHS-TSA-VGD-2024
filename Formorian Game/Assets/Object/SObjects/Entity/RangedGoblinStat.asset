@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: 00000000020000000400000005000000030000000100000006000000
   values:
-  - 6
+  - 4
   - 2.5
   - 18
   - 5
