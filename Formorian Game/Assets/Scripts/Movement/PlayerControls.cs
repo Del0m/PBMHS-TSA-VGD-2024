@@ -94,7 +94,7 @@ public class PlayerControls : Movement
     public void Dash(InputAction.CallbackContext ctx)
     {
 
-        if (ctx.performed)
+        if (ctx.performed && !dashCooldown)
         {
             StartCoroutine(DashRoutine());
         }
